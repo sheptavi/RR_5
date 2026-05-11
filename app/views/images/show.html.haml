@@ -1,0 +1,41 @@
+.container.mt-4
+  .d-flex.justify-content-between.align-items-center.mb-4
+    %h1= @image.name
+    = link_to "Редактировать", edit_image_path(@image), class: "btn-create"
+
+  .row
+    .col-md-6
+      .card.theme-card
+        .card-body
+          - if @image.file.present?
+            <img src="#{@image.file}" class="img-fluid rounded" style="width: 100%; border-radius: 15px;">
+          - else
+            .alert.alert-warning.text-center Нет изображения
+
+    .col-md-6
+      .card.theme-card
+        .card-body
+          %p
+            %strong Название:
+            %br
+            = @image.name
+          %p
+            %strong Тема:
+            %br
+            = @image.theme&.name || "Без темы"
+          %p
+            %strong Ссылка на файл:
+            %br
+            = @image.file
+          %p
+            %strong Средняя оценка:
+            %br
+            %span.badge-counter= @image.ave_value ? @image.ave_value.round(2) : "Нет оценок"
+          %p
+            %strong Создано:
+            %br
+            = @image.created_at.strftime("%d.%m.%Y %H:%M") if @image.created_at
+
+    .mt-4.text-center
+      = link_to "Назад к списку", images_path, class: "btn-create"
+

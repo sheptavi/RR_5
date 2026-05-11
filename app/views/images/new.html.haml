@@ -1,0 +1,28 @@
+.container.mt-4
+  .d-flex.justify-content-between.align-items-center.mb-4
+    %h1 Новое изображение
+    = link_to "Назад", images_path, class: "btn-create"
+
+  .card.theme-card
+    .card-body
+      = form_with model: @image, local: true do |f|
+        .mb-3
+          = f.label :name, "Название изображения", class: "form-label fw-bold"
+          = f.text_field :name, class: "form-control", placeholder: "Например: Горный пейзаж", required: true
+        
+        .mb-3
+          = f.label :file, "Имя файла", class: "form-label fw-bold"
+          = f.text_field :file, class: "form-control", placeholder: "Например: image_1.jpg", required: true
+        
+        .mb-3
+          = f.label :theme_id, "Тема", class: "form-label fw-bold"
+          = f.collection_select :theme_id, Theme.all, :id, :name, { prompt: "--- Выберите тему ---" }, { class: "form-select" }
+        
+        .mb-3
+          = f.label :ave_value, "Средняя оценка", class: "form-label fw-bold"
+          = f.number_field :ave_value, class: "form-control", step: 0.01, placeholder: "Например: 75.5"
+        
+       
+        .d-flex.gap-2.justify-content-center
+          = f.submit "Создать изображение", class: "btn-create"
+          = link_to "Отмена", images_path, class: "btn-create"

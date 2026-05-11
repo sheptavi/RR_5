@@ -10,26 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_05_11_211404) do
+ActiveRecord::Schema[7.1].define(version: 2026_05_11_214552) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "assessments", force: :cascade do |t|
+  create_table "images", force: :cascade do |t|
+    t.string "name"
+    t.string "file"
+    t.float "ave_value"
+    t.bigint "theme_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["theme_id"], name: "index_images_on_theme_id"
+  end
+
+  create_table "themes", force: :cascade do |t|
+    t.string "name"
+    t.integer "qty_items"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "values", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.bigint "image_id", null: false
     t.integer "value"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["image_id"], name: "index_assessments_on_image_id"
+    t.index ["image_id"], name: "index_values_on_image_id"
+    t.index ["user_id"], name: "index_values_on_user_id"
   end
 
-  create_table "images", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.string "image_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_foreign_key "assessments", "images"
+  add_foreign_key "images", "themes"
+  add_foreign_key "values", "images"
+  add_foreign_key "values", "users"
 end

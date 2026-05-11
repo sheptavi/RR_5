@@ -1,9 +1,10 @@
 class CreateImages < ActiveRecord::Migration[7.1]
   def change
     create_table :images do |t|
-      t.string :title
-      t.text :description
-      t.string :image_url
+      t.string :name
+      t.string :file
+      t.float :ave_value
+      t.references :theme, null: false, foreign_key: true
 
       t.timestamps
     end

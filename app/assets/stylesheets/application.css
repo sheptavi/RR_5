@@ -1,0 +1,218 @@
+/* ========== ОБЩИЕ СТИЛИ ========== */
+body {
+  background: #d4dce6;  /* Более серый фон, чем был */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+}
+
+/* ========== КАРТОЧКИ ТЕМ — ИНТЕРАКТИВНЫЕ ========== */
+.theme-card {
+  background: white;
+  border: 1px solid #c0ccd8;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.theme-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 25px 40px rgba(0,0,0,0.15);
+  border-color: #a78bfa;
+}
+
+.theme-card:active {
+  transform: scale(0.98);
+}
+
+.theme-card .card-body {
+  padding: 1.5rem;
+}
+
+.theme-card .card-title {
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  border-left: 4px solid #8b5cf6;
+  padding-left: 12px;
+  transition: border-color 0.2s ease;
+}
+
+.theme-card:hover .card-title {
+  border-left-color: #6d28d9;
+}
+
+/* ========== ВСЕ КНОПКИ — ОДИНАКОВЫЙ ФИОЛЕТОВЫЙ ========== */
+
+/* Кнопка "Новая тема" — фиолетовый градиент */
+.btn-create {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+  color: white;
+  border: none;
+  border-radius: 40px !important;
+  padding: 10px 28px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-create:hover {
+  transform: translateY(-2px);
+  color: white;
+  background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+  box-shadow: 0 8px 20px rgba(139,92,246,0.35);
+}
+
+.btn-create:active {
+  transform: translateY(1px);
+}
+
+/* Все кнопки действий (Показать, Редактировать, Удалить) — одинаковые */
+.btn-action {
+  background-color: #8b5cf6;
+  color: white;
+  border: none;
+  border-radius: 40px !important;
+  padding: 6px 18px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.btn-action:hover {
+  background-color: #7c3aed;
+  transform: translateY(-2px);
+  color: white;
+  box-shadow: 0 4px 12px rgba(139,92,246,0.3);
+}
+
+.btn-action:active {
+  transform: translateY(1px);
+}
+
+/* Кнопка "Удалить" — ТЕПЕРЬ ТАКОГО ЖЕ ЦВЕТА, КАК И ОСТАЛЬНЫЕ */
+.btn-danger-action {
+  background-color: #8b5cf6;
+  color: white;
+  border: none;
+  border-radius: 40px !important;
+  padding: 6px 18px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.btn-danger-action:hover {
+  background-color: #7c3aed;
+  transform: translateY(-2px);
+  color: white;
+  box-shadow: 0 4px 12px rgba(139,92,246,0.3);
+}
+
+.btn-danger-action:active {
+  transform: translateY(1px);
+}
+
+/* ========== БЭЙДЖИ (счетчики) ========== */
+.badge-counter {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+  border-radius: 40px;
+  padding: 5px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+  display: inline-block;
+}
+
+/* ========== ЗАГОЛОВОК СТРАНИЦЫ С ДЛИННОЙ ПОЛОСКОЙ ========== */
+.page-header {
+  margin-bottom: 2rem;
+}
+
+h1 {
+  color: #2c3e50;
+  font-weight: 700;
+  font-size: 2rem;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+h1:after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  width: 100%;           /* ← Полная ширина текста */
+  height: 4px;
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* Полоска увеличивается при наведении на заголовок */
+h1:hover:after {
+  background: linear-gradient(135deg, #9b6ff6 0%, #7d3aed 100%);
+}
+
+/* ========== РАЗДЕЛИТЕЛЬНЫЕ ЛИНИИ ========== */
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(135deg, #c0ccd8 0%, #e0e8f0 100%);
+  margin: 1rem 0;
+}
+
+/* ========== ОТСТУПЫ ========== */
+.container {
+  max-width: 1300px;
+}
+
+.gap-2 {
+  gap: 0.65rem;
+}
+
+.d-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+/* Анимация появления карточек */
+.theme-card {
+  animation: fadeInUp 0.5s ease backwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Задержки для карточек */
+.theme-card:nth-child(1) { animation-delay: 0.05s; }
+.theme-card:nth-child(2) { animation-delay: 0.1s; }
+.theme-card:nth-child(3) { animation-delay: 0.15s; }
+.theme-card:nth-child(4) { animation-delay: 0.2s; }
+.theme-card:nth-child(5) { animation-delay: 0.25s; }
+.theme-card:nth-child(6) { animation-delay: 0.3s; }

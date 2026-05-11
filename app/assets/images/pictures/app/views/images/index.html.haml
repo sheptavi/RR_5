@@ -1,0 +1,32 @@
+cat > app/views/images/index.html.haml << 'EOF'
+.container.mt-4
+  .d-flex.justify-content-between.align-items-center.mb-4
+    %h1 Список изображений
+    = link_to "Новое изображение", new_image_path, class: "btn-create"
+
+  - if @images.any?
+    .row
+      - @images.each do |image|
+        .col-md-4.mb-4
+          .card.theme-card
+            - if image.file.present?
+              <img src="#{image.file}" class="card-img-top" style="height: 200px; object-fit: cover; border-radius: 15px 15px 0 0;">
+            - else
+              .card-img-top.bg-secondary.text-white.text-center.py-5 Нет изображения
+            .card-body
+              %h5.card-title= image.name
+              %p.card-text.mt-3
+                Тема:
+                %span.badge-counter= image.theme&.name || "Без темы"
+              %p.card-text
+                Средняя оценка:
+                %span.badge-counter= image.ave_value ? image.ave_value.round(2) : "Нет оценок"
+              .d-flex.gap-2.justify-content-center.mt-4
+                = link_to "Показать", image, class: "btn-action"
+                = link_to "Редактировать", edit_image_path(image), class: "btn-action"
+                = link_to "Удалить", image, method: :delete, data: { confirm: "Вы уверены?" }, class: "btn-action"
+  - else
+    .alert.alert-info.text-center
+      Пока нет ни одного изображения.
+      = link_to "Создать изображение", new_image_path, class: "btn-create ms-2"
+EOF

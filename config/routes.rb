@@ -1,15 +1,37 @@
 Rails.application.routes.draw do
+  get 'values/index'
+  get 'values/show'
+  get 'values/new'
+  get 'values/edit'
+  get 'values/create'
+  get 'values/update'
+  get 'values/destroy'
+  get 'images/index'
+  get 'images/show'
+  get 'images/new'
+  get 'images/edit'
+  get 'images/create'
+  get 'images/update'
+  get 'images/destroy'
+  get 'themes/index'
+  get 'themes/show'
+  get 'themes/new'
+  get 'themes/edit'
+  get 'themes/create'
+  get 'themes/update'
+  get 'themes/destroy'
+  # Главная страница
+  root 'main#index'
+  
+  # Страницы контроллера main
   get 'main/index'
   get 'main/help'
   get 'main/contacts'
   get 'main/about'
-  root "main#index"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
-
-  # Defines the root path route ("/")
-  # root "posts#index"
+  
+  # Ресурсы для работы с базой данных
+  resources :themes
+  resources :images
+  resources :values
+  resources :users
 end

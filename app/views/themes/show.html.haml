@@ -1,0 +1,16 @@
+.container.mt-4
+  .d-flex.justify-content-between.align-items-center.mb-4
+    %h1= @theme.name
+    = link_to "Редактировать", edit_theme_path(@theme), class: "btn-create"
+  
+  .card
+    .card-body
+      %p
+        %strong Количество изображений:
+        = @theme.qty_items || 0
+      %p
+        %strong Создано:
+        = l(@theme.created_at, format: :long) if @theme.created_at
+  
+  .mt-4
+    = link_to "← Назад к списку", themes_path, class: "btn-create"
