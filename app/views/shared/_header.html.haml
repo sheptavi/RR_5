@@ -1,0 +1,25 @@
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+  .container
+    = link_to root_path, class: "navbar-brand" do
+      %i.fas.fa-star.me-2
+      Мой курсовой проект
+    %button.navbar-toggler{type: "button", data: {bs_toggle: "collapse"}, data_bs_target: "#navbarNav"}
+      %span.navbar-toggler-icon
+    #navbarNav.collapse.navbar-collapse
+      %ul.navbar-nav.ms-auto
+        %li.nav-item
+          = link_to root_path, class: "nav-link" do
+            %i.fas.fa-home.me-1
+            Главная
+        %li.nav-item
+          = link_to main_help_path, class: "nav-link" do
+            %i.fas.fa-question-circle.me-1
+            Помощь
+        %li.nav-item
+          = link_to main_contacts_path, class: "nav-link" do
+            %i.fas.fa-envelope.me-1
+            Контакты
+        %li.nav-item
+          = link_to main_about_path, class: "nav-link" do
+            %i.fas.fa-info-circle.me-1
+            О проекте

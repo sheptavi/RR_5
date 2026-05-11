@@ -1,0 +1,13 @@
+%footer.bg-dark.text-white.text-center.py-4.mt-5
+  .container
+    .row
+      .col
+        = link_to "Главная", root_path, class: "text-white mx-2 text-decoration-none"
+        = link_to "Помощь", main_help_path, class: "text-white mx-2 text-decoration-none"
+        = link_to "Контакты", main_contacts_path, class: "text-white mx-2 text-decoration-none"
+        = link_to "О проекте", main_about_path, class: "text-white mx-2 text-decoration-none"
+    %hr.bg-secondary
+    %p.mb-0
+      &copy; #{Time.now.year} Мой курсовой проект
+      %br
+      %small Все права защищены
