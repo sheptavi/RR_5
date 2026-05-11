@@ -80,7 +80,7 @@ test:
 production:
   <<: *default
   database: my_app_production
-  username: vladiclava
+  username: vladislava
   password: 26132422
   host: localhost
   port: 5432
