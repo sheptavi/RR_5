@@ -1,0 +1,28 @@
+.container.mt-4
+  .d-flex.justify-content-between.align-items-center.mb-4
+    %h1= @user.name || "Пользователь"
+    = link_to "Редактировать", edit_user_path(@user), class: "btn-create"
+
+  .row
+    .col-md-6
+      .card.theme-card
+        .card-body
+          %p
+            %strong Имя:
+            %br
+            = @user.name
+          %p
+            %strong Email:
+            %br
+            = @user.email
+          %p
+            %strong ID:
+            %br
+            = @user.id
+          %p
+            %strong Создан:
+            %br
+            = @user.created_at.strftime("%d.%m.%Y %H:%M") if @user.created_at
+
+  .mt-4.text-center
+    = link_to "← Назад к списку", users_path, class: "btn-create"

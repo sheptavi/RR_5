@@ -1,0 +1,25 @@
+.container.mt-4
+  .d-flex.justify-content-between.align-items-center.mb-4
+    %h1 Список пользователей
+    = link_to "Новый пользователь", new_user_path, class: "btn-create"
+
+  - if @users.any?
+    .row
+      - @users.each do |user|
+        .col-md-4.mb-4
+          .card.theme-card
+            .card-body
+              %h5.card-title= user.name || "Без имени"
+              %p.card-text
+                %strong Email:
+                %br
+                = user.email
+              .d-flex.gap-2.justify-content-center.mt-4
+                = link_to "Показать", user, class: "btn-action"
+                = link_to "Редактировать", edit_user_path(user), class: "btn-action"
+                = link_to "Удалить", user, method: :delete, data: { confirm: "Вы уверены?" }, class: "btn-action"
+  - else
+    .alert.alert-info.text-center
+      Пока нет ни одного пользователя.
+      = link_to "Создать первого пользователя", new_user_path, class: "btn-create ms-2"
+

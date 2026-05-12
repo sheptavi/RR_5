@@ -1,0 +1,23 @@
+.container.mt-4
+  .d-flex.justify-content-between.align-items-center.mb-4
+    %h1 Новый пользователь
+    = link_to "Назад", users_path, class: "btn-create"
+
+  .card.theme-card
+    .card-body
+      = form_with model: @user, local: true do |f|
+        .mb-3
+          = f.label :name, "Имя", class: "form-label fw-bold"
+          = f.text_field :name, class: "form-control", placeholder: "Введите имя"
+        
+        .mb-3
+          = f.label :email, "Email", class: "form-label fw-bold"
+          = f.email_field :email, class: "form-control", placeholder: "user@example.com", required: true
+        
+        .d-flex.gap-2.justify-content-center
+          = f.submit "Создать пользователя", class: "btn-create"
+          = link_to "Отмена", users_path, class: "btn-create"
+
+  .mt-4.text-center
+    = link_to "Назад к списку", users_path, class: "btn-create"
+

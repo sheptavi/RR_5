@@ -11,12 +11,13 @@
             .card-body
               %h5.card-title= theme.name
               %p.card-text.mt-3
-                Количество изображений: 
+                Количество изображений:
                 %span.badge-counter= theme.qty_items || 0
-                 .d-flex.gap-2.justify-content-center.mt-4
-                   = link_to "Показать", theme, class: "btn-action"
-                   = link_to "Редактировать", edit_theme_path(theme), class: "btn-action"
-                   = link_to "Удалить", theme, method: :delete, data: { confirm: "Вы уверены?" }, class: "btn-action"  - else
-    .alert.alert-info
-      Пока нет ни одной темы. 
-      = link_to "Создайте первую тему!", new_theme_path, class: "btn-create ms-2"
+              .d-flex.gap-2.justify-content-center.mt-4
+                = link_to "Показать", theme, class: "btn-action"
+                = link_to "Редактировать", edit_theme_path(theme), class: "btn-action"
+                = link_to "Удалить", theme, method: :delete, data: { confirm: "Вы уверены?" }, class: "btn-action"
+  - else
+    .alert.alert-info.text-center
+      Пока нет ни одной темы.
+      = link_to "Создать первую тему!", new_theme_path, class: "btn-create ms-2"
