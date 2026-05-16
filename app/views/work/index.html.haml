@@ -1,0 +1,47 @@
+.container.mt-4
+  .row
+    .col-md-3
+      .card.theme-card
+        .card-body
+          %h4 Выбор темы
+          .select_theme
+            %button.btn-create#select_theme_btn{style: "width: 100%;"} Выбрать тему
+          .theme_select_container{style: "display: none; margin-top: 15px;"}
+            %select#theme_dropdown.form-select
+              %option{value: ""} --- Выберите тему ---
+          
+    .col-md-9
+      .card.theme-card.image_display
+        .card-body
+          .up-theme.text-center
+            %h2 Выберите тему для оценки
+          
+          .up.text-center.mt-2{style: "color: #6c757d; font-size: 1.2rem;"}
+            Изображение не выбрано
+          
+          .row.mt-4
+            .col-md-1.img-left-side{style: "display: none;"}
+              .text-center
+                %i.fa.fa-chevron-circle-left.fa-2x{style: "cursor: pointer; color: #8b5cf6;"}
+            
+            .col-md-10.img-center.text-center
+              %img#main_image{src: "https://picsum.photos/id/1/500/400", alt: "Default Image", style: "width: 100%; border-radius: 15px;"}
+            
+            .col-md-1.img-right-side{style: "display: none;"}
+              .text-center
+                %i.fa.fa-chevron-circle-right.fa-2x{style: "cursor: pointer; color: #8b5cf6;"}
+          
+          .row.mt-4
+            .col-md-12
+              .rating-area.text-center
+                %h4 Ваша оценка:
+                .rating-buttons.mt-2
+                  - (1..10).each do |i|
+                    %button.btn-rating{data: {value: i}, style: "margin: 3px;"}= i
+                .mt-3
+                  %button.btn-create#save_rating Сохранить оценку
+              
+              .result-area.mt-4
+                %h4 Результаты:
+                %p#user_value Ваша оценка: 
+                %p#common_value Средняя оценка экспертов: 

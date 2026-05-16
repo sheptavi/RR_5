@@ -216,3 +216,55 @@ hr {
 .theme-card:nth-child(4) { animation-delay: 0.2s; }
 .theme-card:nth-child(5) { animation-delay: 0.25s; }
 .theme-card:nth-child(6) { animation-delay: 0.3s; }
+
+/* ========== КНОПКИ ОЦЕНОК ========== */
+.btn-rating {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 18px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-rating:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+}
+
+.btn-rating:active {
+  transform: scale(0.98);
+}
+
+/* Кнопки перелистывания */
+.img-left-side, .img-right-side {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.img-left-side:hover, .img-right-side:hover {
+  transform: scale(1.1);
+}
+
+/* Область отображения */
+.up-theme {
+  color: #2c3e50;
+  font-weight: 600;
+  border-left: 4px solid #8b5cf6;
+  padding-left: 15px;
+}
+
+.rating-area {
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.result-area {
+  background: #eef2f5;
+  border-radius: 15px;
+  padding: 15px;
+}
