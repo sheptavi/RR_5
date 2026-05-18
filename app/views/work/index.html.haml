@@ -1,3 +1,14 @@
+- if signed_in?
+  .alert.alert-success.mb-4
+    Добро пожаловать, #{current_user.name}! Выберите тему для оценки.
+- else
+  .alert.alert-info.mb-4
+    = link_to "Войдите", signin_path
+    или
+    = link_to "зарегистрируйтесь", signup_path
+    , чтобы сохранять свои оценки.
+
+
 .container.mt-4
   .row
     .col-md-3

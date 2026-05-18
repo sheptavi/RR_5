@@ -11,6 +11,8 @@ gem "html2haml", "~> 2.3"
 gem "sassc-rails"
 gem "bootstrap", "~> 5.3"
 
+gem 'bcrypt', '~> 3.1.7'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails" 
 

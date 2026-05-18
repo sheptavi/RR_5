@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   root 'work#index'
   
+  # Маршруты для входа/регистрации
+  get    '/signup',  to: 'users#new'
+  post   '/signup',  to: 'users#create'
+  get    '/signin',  to: 'sessions#new'
+  post   '/signin',  to: 'sessions#create'
+  delete '/signout', to: 'sessions#destroy'
+  
   get 'main/index'
   get 'main/help'
   get 'main/contacts'
@@ -9,7 +16,7 @@ Rails.application.routes.draw do
   resources :themes
   resources :images
   resources :values
-  resources :users
+  resources :users, only: [:show]
   
   match '/work', to: 'work#index', via: :get
   match '/choose_theme', to: 'work#choose_theme', via: :get

@@ -2,24 +2,26 @@
   .container
     = link_to root_path, class: "navbar-brand" do
       %i.fas.fa-star.me-2
-      Мой курсовой проект
+      Экспертная система
     %button.navbar-toggler{type: "button", data: {bs_toggle: "collapse"}, data_bs_target: "#navbarNav"}
       %span.navbar-toggler-icon
     #navbarNav.collapse.navbar-collapse
       %ul.navbar-nav.ms-auto
-        %li.nav-item
-          = link_to root_path, class: "nav-link" do
-            %i.fas.fa-home.me-1
-            Главная
-        %li.nav-item
-          = link_to main_help_path, class: "nav-link" do
-            %i.fas.fa-question-circle.me-1
-            Помощь
-        %li.nav-item
-          = link_to main_contacts_path, class: "nav-link" do
-            %i.fas.fa-envelope.me-1
-            Контакты
-        %li.nav-item
-          = link_to main_about_path, class: "nav-link" do
-            %i.fas.fa-info-circle.me-1
-            О проекте
+        %li.nav-item= link_to "Главная", root_path, class: "nav-link"
+        %li.nav-item= link_to "Помощь", main_help_path, class: "nav-link"
+        %li.nav-item= link_to "Контакты", main_contacts_path, class: "nav-link"
+        %li.nav-item= link_to "О проекте", main_about_path, class: "nav-link"
+        
+        - if signed_in?
+          %li.nav-item.dropdown
+            %a.nav-link.dropdown-toggle{href: "#", role: "button", data: {bs_toggle: "dropdown"}}
+              = gravatar_for current_user, size: 30
+              = current_user.name
+            %ul.dropdown-menu.dropdown-menu-end
+              %li= link_to "Мой профиль", user_path(current_user), class: "dropdown-item"
+              %li
+                %hr.dropdown-divider
+              %li= link_to "Выйти", signout_path, method: :delete, class: "dropdown-item text-danger"
+        - else
+          %li.nav-item= link_to "Вход", signin_path, class: "nav-link btn btn-outline-light ms-2"
+          %li.nav-item= link_to "Регистрация", signup_path, class: "nav-link btn btn-primary ms-2"

@@ -1,28 +1,45 @@
 .container.mt-4
-  .d-flex.justify-content-between.align-items-center.mb-4
-    %h1= @user.name || "Пользователь"
-    = link_to "Редактировать", edit_user_path(@user), class: "btn-create"
-
   .row
-    .col-md-6
+    .col-md-4
+      .card.theme-card.text-center
+        .card-body
+          = gravatar_for @user, size: 150
+          %h2.mt-3= @user.name
+          %p.text-muted= @user.email
+          = link_to "Перейти в рабочую область", work_path, class: "btn-create mt-3"
+    
+    .col-md-8
       .card.theme-card
         .card-body
+          %h3 Моя статистика
+          %hr
           %p
-            %strong Имя:
-            %br
-            = @user.name
+            %strong Всего оценок:
+            = @user.values.count
           %p
-            %strong Email:
-            %br
-            = @user.email
-          %p
-            %strong ID:
-            %br
-            = @user.id
-          %p
-            %strong Создан:
-            %br
-            = @user.created_at.strftime("%d.%m.%Y %H:%M") if @user.created_at
-
-  .mt-4.text-center
-    = link_to "← Назад к списку", users_path, class: "btn-create"
+            %strong Средняя оценка:
+            - if @user.values.average(:value).present?
+              = @user.values.average(:value).round(2)
+            - else
+              Нет оценок
+          
+          %h3.mt-4 Мои оценки
+          %hr
+          - if @user.values.any?
+            .table-responsive
+              %table.table.table-hover
+                %thead
+                  %tr
+                    %th Изображение
+                    %th Оценка
+                    %th Дата
+                %tbody
+                  - @user.values.order(created_at: :desc).each do |value|
+                    %tr
+                      %td= value.image&.name || "Неизвестно"
+                      %td
+                        %span.badge.bg-primary= value.value
+                      %td= value.created_at.strftime("%d.%m.%Y")
+          - else
+            .alert.alert-info
+              Вы ещё не оценили ни одного изображения
