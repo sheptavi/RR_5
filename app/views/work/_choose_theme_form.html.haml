@@ -1,0 +1,8 @@
+.form_select
+  = form_tag("/display_theme", remote: true, method: :post, format: :js) do
+    = select_tag :theme,
+                 options_for_select(@themes || [], @selected_theme),
+                 prompt: "--- Выберите тему ---",
+                 class: "form-select",
+                 id: "theme_select",
+                 onchange: "$(this).parents('form').submit();"

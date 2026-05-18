@@ -1,0 +1,30 @@
+// Временное переключение пользователей для тестирования
+var currentUserId = 1;  // По умолчанию пользователь 1
+// Оценка (с поддержкой user_id)
+$(document).on('click', '.btn-rating', function() {
+  var value = $(this).data('value');
+  console.log('Оценка нажата:', value);
+  console.log('Текущий пользователь:', currentUserId);
+  
+  if (!currentImageId) {
+    alert('Сначала выберите тему');
+    return;
+  }
+  
+  $('#user_value').text('Ваша оценка: ' + value);
+  
+  $.post('/rate_image', { 
+    image_id: currentImageId, 
+    value: value,
+    user_id: currentUserId   // ← передаём ID пользователя
+  }, function(data) {
+    console.log('Ответ сервера:', data);
+    if (data.success) {
+      $('#common_value').text('Средняя оценка экспертов: ' + data.common_value);
+      console.log('Новая средняя оценка: ' + data.common_value);
+    }
+  }).fail(function() {
+    console.log('Ошибка сохранения оценки');
+    alert('Не удалось сохранить оценку');
+  });
+});

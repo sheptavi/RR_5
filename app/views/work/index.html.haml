@@ -9,7 +9,7 @@
           .theme_select_container{style: "display: none; margin-top: 15px;"}
             %select#theme_dropdown.form-select
               %option{value: ""} --- Выберите тему ---
-          
+      
     .col-md-9
       .card.theme-card.image_display
         .card-body
@@ -38,8 +38,6 @@
                 .rating-buttons.mt-2
                   - (1..10).each do |i|
                     %button.btn-rating{data: {value: i}, style: "margin: 3px;"}= i
-                .mt-3
-                  %button.btn-create#save_rating Сохранить оценку
               
               .result-area.mt-4
                 %h4 Результаты:
