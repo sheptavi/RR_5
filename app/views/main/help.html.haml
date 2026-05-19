@@ -1,9 +1,8 @@
-%h1 Помощь
-%p Здесь будет инструкция по работе с приложением.
-%p Основные функции:
+%h1= t('main.help.title')
+%p= t('main.help.instruction')
+%p= t('main.help.functions')
 %ul
-  %li Выбор изображения из списка
-  %li Постановка оценки от 1 до 10
-  %li Просмотр результатов экспертизы
-
-= link_to "← На главную", root_path, class: "btn btn-secondary mt-3"
+  %li= t('main.help.func1')
+  %li= t('main.help.func2')
+  %li= t('main.help.func3')
+= link_to t('main.help.back'), root_path, class: "btn btn-secondary mt-3"

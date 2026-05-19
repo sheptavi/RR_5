@@ -1,30 +1,30 @@
 .container.mt-4
   .d-flex.justify-content-between.align-items-center.mb-4
-    %h1 Список изображений
-    = link_to "Новое изображение", new_image_path, class: "btn-create"
+    %h1= t('images.index.title')
+    = link_to t('images.index.new_image'), new_image_path, class: "btn-create"
 
   - if @images.any?
     .row
       - @images.each do |image|
         .col-md-4.mb-4
           .card.theme-card
-            - if image.file.present?
-              <img src="#{image.file}" class="card-img-top" style="height: 200px; object-fit: cover; border-radius: 15px 15px 0 0;">
+            - if image.file.present? && image.file.start_with?('http')
+              %img.card-img-top{src: image.file, style: "height: 200px; object-fit: cover; border-radius: 15px 15px 0 0;"}
             - else
-              .card-img-top.bg-secondary.text-white.text-center.py-5 Нет изображения
+              .card-img-top.bg-secondary.text-white.text-center.py-5= t('images.show.no_image')
             .card-body
-              %h5.card-title= image.name
+              %h5.card-title= image.translated_name
               %p.card-text.mt-3
-                Тема:
-                %span.badge-counter= image.theme&.name || "Без темы"
+                = t('images.index.theme')
+                %span.badge-counter= image.theme&.translated_name || t('images.index.without_theme')
               %p.card-text
-                Средняя оценка:
-                %span.badge-counter= image.ave_value ? image.ave_value.round(2) : "Нет оценок"
+                = t('images.index.average_rating')
+                %span.badge-counter= image.ave_value ? image.ave_value.round(2) : t('images.index.no_ratings')
               .d-flex.gap-2.justify-content-center.mt-4
-                = link_to "Показать", image_path(image), class: "btn-action"
-                = link_to "Редактировать", edit_image_path(image), class: "btn-action"
-                = link_to "Удалить", image, method: :delete, data: { confirm: "Вы уверены?" }, class: "btn-action"
+                = link_to t('images.index.show'), image, class: "btn-action"
+                = link_to t('images.index.edit'), edit_image_path(image), class: "btn-action"
+                = link_to t('images.index.delete'), image, method: :delete, data: { confirm: t('images.index.confirm') }, class: "btn-action"
   - else
     .alert.alert-info.text-center
-      Пока нет ни одного изображения.
-      = link_to "Создать изображение", new_image_path, class: "btn-create ms-2"
+      = t('images.index.no_images')
+      = link_to t('images.index.create_first'), new_image_path, class: "btn-create ms-2"

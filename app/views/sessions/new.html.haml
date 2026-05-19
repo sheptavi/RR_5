@@ -3,22 +3,22 @@
     .col-md-4
       .card.theme-card
         .card-body
-          %h2.text-center.mb-4 Вход в систему
+          %h2.text-center.mb-4= t('sessions.new.title')
           
           = form_for(:session, url: signin_path) do |f|
             .mb-3
-              = f.label :email, "Email", class: "form-label"
+              = f.label :email, t('sessions.new.email'), class: "form-label"
               = f.email_field :email, class: "form-control", placeholder: "example@mail.ru", required: true
             
             .mb-3
-              = f.label :password, "Пароль", class: "form-label"
+              = f.label :password, t('sessions.new.password'), class: "form-label"
               = f.password_field :password, class: "form-control", placeholder: "******", required: true
             
             .d-grid
-              = f.submit "Войти", class: "btn-create"
+              = f.submit t('sessions.new.submit'), class: "btn-create"
           
           %hr
           .text-center
             %p
-              Нет аккаунта?
-              = link_to "Зарегистрироваться", signup_path, class: "btn-link"
+              = t('sessions.new.no_account')
+              = link_to t('sessions.new.sign_up'), signup_path, class: "btn-link"

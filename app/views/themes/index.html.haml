@@ -1,7 +1,8 @@
 .container.mt-4
+.container.mt-4
   .d-flex.justify-content-between.align-items-center.mb-4
-    %h1 Список тем
-    = link_to "Новая тема", new_theme_path, class: "btn-create"
+    %h1= t('themes.index.title')
+    = link_to t('themes.index.new_theme'), new_theme_path, class: "btn-create"
 
   - if @themes.any?
     .row
@@ -9,15 +10,15 @@
         .col-md-4.mb-4
           .card.theme-card
             .card-body
-              %h5.card-title= theme.name
-              %p.card-text.mt-3
-                Количество изображений:
+              %h5.card-title= theme.translated_name
+              %p.card-text
+                = t('themes.index.images_count')
                 %span.badge-counter= theme.qty_items || 0
               .d-flex.gap-2.justify-content-center.mt-4
-                = link_to "Показать", theme, class: "btn-action"
-                = link_to "Редактировать", edit_theme_path(theme), class: "btn-action"
-                = link_to "Удалить", theme, method: :delete, data: { confirm: "Вы уверены?" }, class: "btn-action"
+                = link_to t('themes.index.show'), theme, class: "btn-action"
+                = link_to t('themes.index.edit'), edit_theme_path(theme), class: "btn-action"
+                = link_to t('themes.index.delete'), theme, method: :delete, data: { confirm: t('themes.index.confirm') }, class: "btn-action"
   - else
     .alert.alert-info.text-center
-      Пока нет ни одной темы.
-      = link_to "Создать первую тему!", new_theme_path, class: "btn-create ms-2"
+      = t('themes.index.no_themes')
+      = link_to t('themes.index.create_first'), new_theme_path, class: "btn-create ms-2"

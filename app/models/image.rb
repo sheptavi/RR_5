@@ -6,4 +6,8 @@ class Image < ApplicationRecord
   scope :theme_images, ->(theme_id) {
     select(:id, :name, :file, :ave_value).where(theme_id: theme_id)
   }
+  
+  def translated_name
+    I18n.t("images.#{id}", default: name)
+  end
 end

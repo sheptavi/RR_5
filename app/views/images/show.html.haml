@@ -1,41 +1,42 @@
 .container.mt-4
   .d-flex.justify-content-between.align-items-center.mb-4
     %h1= @image.name
-    = link_to "Редактировать", edit_image_path(@image), class: "btn-create"
+    = link_to t('actions.edit'), edit_image_path(@image), class: "btn-create"
 
   .row
     .col-md-6
       .card.theme-card
         .card-body
-          - if @image.file.present?
-            <img src="#{@image.file}" class="img-fluid rounded" style="width: 100%; border-radius: 15px;">
+          - if @image.file.present? && @image.file.start_with?('http')
+            %img.img-fluid.rounded{src: @image.file, style: "width: 100%; border-radius: 15px;"}
+          - elsif @image.file.present?
+            = image_tag "pictures/#{@image.file}", class: "img-fluid rounded", style: "width: 100%; border-radius: 15px;"
           - else
-            .alert.alert-warning.text-center Нет изображения
+            .alert.alert-warning.text-center= t('images.show.no_image')
 
     .col-md-6
       .card.theme-card
         .card-body
           %p
-            %strong Название:
+            %strong= t('images.show.name')
             %br
             = @image.name
           %p
-            %strong Тема:
+            %strong= t('images.show.theme')
             %br
-            = @image.theme&.name || "Без темы"
+            = @image.theme&.name || t('images.index.without_theme')
           %p
-            %strong Ссылка на файл:
+            %strong= t('images.show.file')
             %br
             = @image.file
           %p
-            %strong Средняя оценка:
+            %strong= t('images.show.average')
             %br
-            %span.badge-counter= @image.ave_value ? @image.ave_value.round(2) : "Нет оценок"
+            %span.badge-counter= @image.ave_value ? @image.ave_value.round(2) : t('images.index.no_ratings')
           %p
-            %strong Создано:
+            %strong= t('images.show.created')
             %br
-            = @image.created_at.strftime("%d.%m.%Y %H:%M") if @image.created_at
+            = l(@image.created_at, format: :default) if @image.created_at
 
-    .mt-4.text-center
-      = link_to "Назад к списку", images_path, class: "btn-create"
-
+  .mt-4
+    = link_to t('images.show.back'), images_path, class: "btn-create"

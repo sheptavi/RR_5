@@ -6,40 +6,41 @@
           = gravatar_for @user, size: 150
           %h2.mt-3= @user.name
           %p.text-muted= @user.email
-          = link_to "Перейти в рабочую область", work_path, class: "btn-create mt-3"
+          = link_to t('users.show.go_to_work'), work_path, class: "btn-create mt-3"
     
     .col-md-8
       .card.theme-card
         .card-body
-          %h3 Моя статистика
+          %h3= t('users.show.my_stats')
           %hr
           %p
-            %strong Всего оценок:
+            %strong= t('users.show.total_ratings')
             = @user.values.count
           %p
-            %strong Средняя оценка:
+            %strong= t('users.show.average_rating')
             - if @user.values.average(:value).present?
               = @user.values.average(:value).round(2)
             - else
-              Нет оценок
+              = t('users.show.no_ratings')
           
-          %h3.mt-4 Мои оценки
+          %h3.mt-4= t('users.show.my_ratings')
           %hr
           - if @user.values.any?
             .table-responsive
               %table.table.table-hover
                 %thead
                   %tr
-                    %th Изображение
-                    %th Оценка
-                    %th Дата
+                    %th= t('users.show.image')
+                    %th= t('users.show.rating')
+                    %th= t('users.show.date')
                 %tbody
                   - @user.values.order(created_at: :desc).each do |value|
                     %tr
-                      %td= value.image&.name || "Неизвестно"
+                      %td= value.image&.translated_name || t('users.show.unknown')
+
                       %td
                         %span.badge.bg-primary= value.value
-                      %td= value.created_at.strftime("%d.%m.%Y")
+                      %td= value.created_at.strftime("%d.%m.%Y %H:%M")
           - else
             .alert.alert-info
-              Вы ещё не оценили ни одного изображения
+              = t('users.show.no_ratings')

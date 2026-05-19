@@ -25,3 +25,23 @@
         - else
           %li.nav-item= link_to "Вход", signin_path, class: "nav-link btn btn-outline-light ms-2"
           %li.nav-item= link_to "Регистрация", signup_path, class: "nav-link btn btn-primary ms-2"
+
+        %li.nav-item.dropdown.ms-auto
+          %a.nav-link.dropdown-toggle{href: "#", role: "button", data: {bs_toggle: "dropdown"}}
+            - if I18n.locale == :ru
+              = image_tag "flags/russia.png", style: "width: 20px; margin-right: 5px;"
+              Русский
+            - else
+              = image_tag "flags/uk.png", style: "width: 20px; margin-right: 5px;"
+              English
+          %ul.dropdown-menu.dropdown-menu-end
+            %li
+              = link_to url_for(locale: :ru, params: params.to_unsafe_h.except(:locale)) do
+                = image_tag "flags/russia.png", style: "width: 20px; margin-right: 10px;"
+                Русский
+            %li
+              %hr.dropdown-divider
+            %li
+              = link_to url_for(locale: :en, params: params.to_unsafe_h.except(:locale)) do
+                = image_tag "flags/uk.png", style: "width: 20px; margin-right: 10px;"
+                English

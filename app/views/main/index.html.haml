@@ -1,9 +1,27 @@
-%h1 Добро пожаловать!
-%p Это мой курсовой проект на Ruby on Rails.
-%p Здесь будет экспертная система оценки изображений.
+.jumbotron.bg-light.p-5.rounded-lg.mb-4
+  %h1.display-4= t('main.index.title')
+  %p.lead= t('main.index.description')
+  %hr.my-4
+  %p= t('main.index.expert_system')
+  = link_to t('main.index.start_rating'), root_path, class: "btn btn-primary btn-lg"
 
-%h2 Навигация
-%ul
-  %li= link_to "Помощь", main_help_path
-  %li= link_to "Контакты", main_contacts_path
-  %li= link_to "О проекте", main_about_path
+%h2= t('main.index.features')
+.row
+  .col-md-4
+    .card.text-center
+      .card-body
+        %i.fas.fa-image.fa-3x.mb-3{style: "color: #667eea"}
+        %h5.card-title= t('main.index.images_rating')
+        %p.card-text= t('main.index.images_desc')
+  .col-md-4
+    .card.text-center
+      .card-body
+        %i.fas.fa-chart-line.fa-3x.mb-3{style: "color: #667eea"}
+        %h5.card-title= t('main.index.analysis')
+        %p.card-text= t('main.index.analysis_desc')
+  .col-md-4
+    .card.text-center
+      .card-body
+        %i.fas.fa-user.fa-3x.mb-3{style: "color: #667eea"}
+        %h5.card-title= t('main.index.profile')
+        %p.card-text= t('main.index.profile_desc')
