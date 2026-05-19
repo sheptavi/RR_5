@@ -2,6 +2,7 @@ var currentThemeName = '';
 var currentThemeId = null;
 var currentImageId = null;
 var currentIndex = 0;
+var selectedRating = null;  // Хранит выбранную оценку
 var totalImages = 0;
 
 // Кнопка выбора темы
@@ -50,22 +51,53 @@ $(document).on('change', '#theme_dropdown', function() {
 });
 
 // Оценка
+// Выбор оценки (без сохранения)
 $(document).on('click', '.btn-rating', function() {
-  var value = $(this).data('value');
+  selectedRating = $(this).data('value');
+  console.log('Выбрана оценка:', selectedRating);
+  
+  // Визуально показываем, что оценка выбрана
+  $('.btn-rating').css('background', 'linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%)');
+  $(this).css('background', 'linear-gradient(135deg, #10b981 0%, #059669 100%)');
+  
+  $('#user_value').text('Выбрана оценка: ' + selectedRating + ' (нажмите "Сохранить")');
+});
+
+// Сохранение оценки
+$(document).on('click', '#save_rating', function() {
+  console.log('Кнопка "Сохранить оценку" нажата');
+  
   if (!currentImageId) {
     alert('Сначала выберите тему');
     return;
   }
   
-  $('#user_value').text('Ваша оценка: ' + value);
+  if (!selectedRating) {
+    alert('Сначала выберите оценку (1-10)');
+    return;
+  }
+  
+  console.log('Сохраняем оценку:', selectedRating, 'для изображения:', currentImageId);
+  
+  $('#user_value').text('Сохранение...');
   
   $.post('/rate_image', { 
     image_id: currentImageId, 
-    value: value 
+    value: selectedRating 
   }, function(data) {
+    console.log('Ответ сервера:', data);
     if (data.success) {
+      $('#user_value').text('Ваша оценка: ' + selectedRating);
       $('#common_value').text('Средняя оценка экспертов: ' + data.common_value);
+      
+      // Сбрасываем подсветку кнопок
+      $('.btn-rating').css('background', 'linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%)');
+      selectedRating = null;
+    } else {
+      alert('Ошибка сохранения оценки');
     }
+  }).fail(function() {
+    alert('Не удалось сохранить оценку');
   });
 });
 

@@ -4,7 +4,7 @@ module WorkImage
 
   def show_image(theme_id, image_index)
     theme_images = Image.where(theme_id: theme_id)
-    current_user_id = 1
+    current_user_id = current_user&.id || 1
     
     one_image_attr = theme_images[image_index].attributes
     image_id = one_image_attr["id"]

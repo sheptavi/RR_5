@@ -27,7 +27,8 @@ class WorkController < ApplicationController
         render json: { error: "В этой теме нет изображений" } and return
       end
       
-      @user_value = Value.find_by(user_id: 1, image_id: @image.id)&.value || 0
+      user_id = current_user&.id || 1
+      @user_value = Value.find_by(user_id: user_id, image_id: @image.id)&.value || 0
       
       render json: {
         theme_name: theme.name,
@@ -49,7 +50,12 @@ class WorkController < ApplicationController
   def rate_image
     image_id = params[:image_id]
     value = params[:value].to_i
-    user_id = 1
+    
+    # Ограничиваем оценку от 1 до 10
+    value = 10 if value > 10
+    value = 1 if value < 1
+    
+    user_id = current_user&.id || 1
     
     rating = Value.find_or_initialize_by(user_id: user_id, image_id: image_id)
     rating.value = value
