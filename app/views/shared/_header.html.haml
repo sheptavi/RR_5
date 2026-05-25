@@ -1,16 +1,16 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
   .container
-    = link_to root_path, class: "navbar-brand" do
+    = link_to root_path(locale: I18n.locale), class: "navbar-brand" do
       %i.fas.fa-star.me-2
-      Экспертная система
+      = t('shared.header.logo_title')
     %button.navbar-toggler{type: "button", data: {bs_toggle: "collapse"}, data_bs_target: "#navbarNav"}
       %span.navbar-toggler-icon
     #navbarNav.collapse.navbar-collapse
       %ul.navbar-nav.ms-auto
-        %li.nav-item= link_to "Главная", root_path, class: "nav-link"
-        %li.nav-item= link_to "Помощь", main_help_path, class: "nav-link"
-        %li.nav-item= link_to "Контакты", main_contacts_path, class: "nav-link"
-        %li.nav-item= link_to "О проекте", main_about_path, class: "nav-link"
+        %li.nav-item= link_to t('shared.header.home'), root_path(locale: I18n.locale), class: "nav-link"
+        %li.nav-item= link_to t('shared.header.help'), main_help_path(locale: I18n.locale), class: "nav-link"
+        %li.nav-item= link_to t('shared.header.contacts'), main_contacts_path(locale: I18n.locale), class: "nav-link"
+        %li.nav-item= link_to t('shared.header.about'), main_about_path(locale: I18n.locale), class: "nav-link"
         
         - if signed_in?
           %li.nav-item.dropdown
@@ -18,30 +18,32 @@
               = gravatar_for current_user, size: 30
               = current_user.name
             %ul.dropdown-menu.dropdown-menu-end
-              %li= link_to "Мой профиль", user_path(current_user), class: "dropdown-item"
+              %li= link_to t('shared.header.profile'), user_path(current_user, locale: I18n.locale), class: "dropdown-item"
               %li
                 %hr.dropdown-divider
-              %li= link_to "Выйти", signout_path, method: :delete, class: "dropdown-item text-danger"
+              %li= link_to t('shared.header.sign_out'), signout_path(locale: I18n.locale), method: :delete, class: "dropdown-item text-danger"
         - else
-          %li.nav-item= link_to "Вход", signin_path, class: "nav-link btn btn-outline-light ms-2"
-          %li.nav-item= link_to "Регистрация", signup_path, class: "nav-link btn btn-primary ms-2"
-
-        %li.nav-item.dropdown.ms-auto
+          %li.nav-item= link_to t('shared.header.sign_in'), signin_path(locale: I18n.locale), class: "nav-link btn btn-outline-light ms-2"
+          %li.nav-item= link_to t('shared.header.sign_up'), signup_path(locale: I18n.locale), class: "nav-link btn btn-primary ms-2"
+        
+        %li.nav-item.dropdown.ms-2
           %a.nav-link.dropdown-toggle{href: "#", role: "button", data: {bs_toggle: "dropdown"}}
             - if I18n.locale == :ru
-              = image_tag "flags/russia.png", style: "width: 20px; margin-right: 5px;"
+              = image_tag "flags/russia.png", style: "width: 16px; margin-right: 4px;"
               Русский
             - else
-              = image_tag "flags/uk.png", style: "width: 20px; margin-right: 5px;"
+              = image_tag "flags/uk.png", style: "width: 16px; margin-right: 4px;"
               English
           %ul.dropdown-menu.dropdown-menu-end
             %li
               = link_to url_for(locale: :ru, params: params.to_unsafe_h.except(:locale)) do
-                = image_tag "flags/russia.png", style: "width: 20px; margin-right: 10px;"
+                = image_tag "flags/russia.png", style: "width: 16px; margin-right: 8px;"
                 Русский
             %li
               %hr.dropdown-divider
             %li
               = link_to url_for(locale: :en, params: params.to_unsafe_h.except(:locale)) do
-                = image_tag "flags/uk.png", style: "width: 20px; margin-right: 10px;"
+                = image_tag "flags/uk.png", style: "width: 16px; margin-right: 8px;"
                 English
+
+            %li.nav-item= link_to "Пользователи", users_path(locale: I18n.locale), class: "nav-link"

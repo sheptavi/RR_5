@@ -3,27 +3,27 @@
     %h1= t('images.index.title')
     = link_to t('images.index.new_image'), new_image_path, class: "btn-create"
 
-  - if @images.any?
+  - if @images&.any?
     .row
-      - @images.each do |image|
+      - @images.each do |img|
         .col-md-4.mb-4
           .card.theme-card
-            - if image.file.present? && image.file.start_with?('http')
-              %img.card-img-top{src: image.file, style: "height: 200px; object-fit: cover; border-radius: 15px 15px 0 0;"}
+            - if img.file.present? && img.file.start_with?('http')
+              %img.card-img-top{src: img.file, style: "height: 200px; object-fit: cover; border-radius: 15px 15px 0 0;"}
             - else
               .card-img-top.bg-secondary.text-white.text-center.py-5= t('images.show.no_image')
             .card-body
-              %h5.card-title= image.translated_name
+              %h5.card-title= img.translated_name
               %p.card-text.mt-3
                 = t('images.index.theme')
-                %span.badge-counter= image.theme&.translated_name || t('images.index.without_theme')
+                %span.badge-counter= img.theme&.translated_name || t('images.index.without_theme')
               %p.card-text
                 = t('images.index.average_rating')
-                %span.badge-counter= image.ave_value ? image.ave_value.round(2) : t('images.index.no_ratings')
+                %span.badge-counter= img.ave_value ? img.ave_value.round(2) : t('images.index.no_ratings')
               .d-flex.gap-2.justify-content-center.mt-4
-                = link_to t('images.index.show'), image, class: "btn-action"
-                = link_to t('images.index.edit'), edit_image_path(image), class: "btn-action"
-                = link_to t('images.index.delete'), image, method: :delete, data: { confirm: t('images.index.confirm') }, class: "btn-action"
+                = link_to t('images.index.show'), img, class: "btn-action"
+                = link_to t('images.index.edit'), edit_image_path(img), class: "btn-action"
+                = link_to t('images.index.delete'), img, method: :delete, data: { confirm: t('images.index.confirm') }, class: "btn-action"
   - else
     .alert.alert-info.text-center
       = t('images.index.no_images')

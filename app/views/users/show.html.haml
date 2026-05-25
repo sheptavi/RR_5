@@ -6,7 +6,7 @@
           = gravatar_for @user, size: 150
           %h2.mt-3= @user.name
           %p.text-muted= @user.email
-          = link_to t('users.show.go_to_work'), work_path, class: "btn-create mt-3"
+          = link_to t('users.show.go_to_work'), work_path(locale: I18n.locale), class: "btn-create mt-3"
     
     .col-md-8
       .card.theme-card
@@ -37,10 +37,9 @@
                   - @user.values.order(created_at: :desc).each do |value|
                     %tr
                       %td= value.image&.translated_name || t('users.show.unknown')
-
                       %td
                         %span.badge.bg-primary= value.value
-                      %td= value.created_at.strftime("%d.%m.%Y %H:%M")
+                      %td= l(value.created_at.to_date, format: :default)
           - else
             .alert.alert-info
               = t('users.show.no_ratings')

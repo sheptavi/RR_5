@@ -1,5 +1,6 @@
-%h1= t('main.about.title')
-%p= t('main.about.description')
-%p= t('main.about.topic')
-%p= t('main.about.tech')
-= link_to t('main.about.back'), root_path, class: "btn btn-secondary mt-3"
+.container.mt-4
+  %h1= t('main.about.title')
+  %p= t('main.about.description')
+  %p= t('main.about.topic')
+  %p= t('main.about.tech')
+  = link_to t('main.about.back'), root_path(locale: I18n.locale), class: "btn btn-secondary mt-3"

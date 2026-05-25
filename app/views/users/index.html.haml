@@ -1,25 +1,31 @@
 .container.mt-4
   .d-flex.justify-content-between.align-items-center.mb-4
-    %h1 Список пользователей
-    = link_to "Новый пользователь", new_user_path, class: "btn-create"
-
+    %h1= t('users.index.title')
+  
   - if @users.any?
-    .row
-      - @users.each do |user|
-        .col-md-4.mb-4
-          .card.theme-card
-            .card-body
-              %h5.card-title= user.name || "Без имени"
-              %p.card-text
-                %strong Email:
-                %br
-                = user.email
-              .d-flex.gap-2.justify-content-center.mt-4
-                = link_to "Показать", user, class: "btn-action"
-                = link_to "Редактировать", edit_user_path(user), class: "btn-action"
-                = link_to "Удалить", user, method: :delete, data: { confirm: "Вы уверены?" }, class: "btn-action"
+    .table-responsive
+      %table.table.table-striped.table-hover
+        %thead
+          %tr
+            %th= t('users.index.id')
+            %th= t('users.index.name')
+            %th= t('users.index.email')
+            %th= t('users.index.ratings_count')
+            %th= t('users.index.avg_rating')
+            %th= t('users.index.show')
+        %tbody
+          - @users.each do |user|
+            %tr
+              %td= user.id
+              %td= user.name
+              %td= user.email
+              %td= user.values.count
+              %td
+                - if user.values.average(:value).present?
+                  = user.values.average(:value).round(2)
+                - else
+                  = t('users.index.no_ratings')
+              %td= link_to t('users.index.show'), user_path(user), class: "btn-sm btn-outline-primary"
   - else
     .alert.alert-info.text-center
-      Пока нет ни одного пользователя.
-      = link_to "Создать первого пользователя", new_user_path, class: "btn-create ms-2"
-
+      = t('users.index.no_users')

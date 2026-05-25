@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :themes
   resources :images
   resources :values
-  resources :users, only: [:show]
+  resources :users, only: [:index, :new, :create, :show]
   
   match '/work', to: 'work#index', via: :get
   match '/choose_theme', to: 'work#choose_theme', via: :get

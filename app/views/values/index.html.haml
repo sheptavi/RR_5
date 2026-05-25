@@ -1,2 +1,23 @@
-%h1 Values#index
-%p Find me in app/views/values/index.html.haml
+.container.mt-4
+  .d-flex.justify-content-between.align-items-center.mb-4
+    %h1= t('values.index.title')
+  
+  - if @values.present? && @values.any?
+    .table-responsive
+      %table.table.table-striped.table-hover
+        %thead
+          %tr
+            %th= t('values.index.user')
+            %th= t('values.index.image')
+            %th= t('values.index.value')
+            %th= t('values.index.created')
+        %tbody
+          - @values.each do |value|
+            %tr
+              %td= value.user&.name || value.user_id
+              %td= value.image&.translated_name || value.image_id
+              %td= value.value
+              %td= l(value.created_at.to_date, format: :default) if value.created_at
+  - else
+    .alert.alert-info.text-center
+      Нет оценок в системе

@@ -26,7 +26,7 @@
             
             .col-md-10.img-center.text-center
               %img#main_image{src: "https://picsum.photos/id/1/500/400", alt: t('work.index.image_not_selected'), style: "width: 100%; border-radius: 15px;"}
-
+            
             .col-md-1.img-right-side{style: "display: none;"}
               .text-center
                 %i.fa.fa-chevron-circle-right.fa-2x{style: "cursor: pointer; color: #8b5cf6;"}
@@ -34,7 +34,8 @@
           .row.mt-4
             .col-md-12
               .rating-area.text-center
-                %h4= t('work.index.your_rating')
+                %h4= t('work.index.question')
+                %h5.mt-2= t('work.index.your_rating')
                 .rating-buttons.mt-2
                   - (1..10).each do |i|
                     %button.btn-rating{data: {value: i}, style: "margin: 3px;"}= i
@@ -45,9 +46,12 @@
               
               .result-area.mt-4
                 %h4= t('work.index.results')
-                %p#user_value= "#{t('work.index.user_value')} "
-                %p#common_value= "#{t('work.index.common_value')} "
+                %p#user_value
+                  = t('work.index.user_value')
+                  %span#user_value_span
+                %p#common_value
+                  = t('work.index.common_value')
+                  %span#common_value_span
 
-          .theme_select_container{style: "display: none; margin-top: 15px;"}
-            %select#theme_dropdown.form-select
-              %option{value: ""} --- #{t('work.index.select_theme')} ---
+
+%img#main_image{src: "https://picsum.photos/id/1/500/400", alt: t('work.index.image_not_selected'), style: "width: 100%; border-radius: 15px;", referrerpolicy: "no-referrer"}

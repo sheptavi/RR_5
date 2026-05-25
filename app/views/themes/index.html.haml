@@ -1,5 +1,4 @@
 .container.mt-4
-.container.mt-4
   .d-flex.justify-content-between.align-items-center.mb-4
     %h1= t('themes.index.title')
     = link_to t('themes.index.new_theme'), new_theme_path, class: "btn-create"
@@ -13,7 +12,7 @@
               %h5.card-title= theme.translated_name
               %p.card-text
                 = t('themes.index.images_count')
-                %span.badge-counter= theme.qty_items || 0
+                %span.badge-counter= theme.images.count
               .d-flex.gap-2.justify-content-center.mt-4
                 = link_to t('themes.index.show'), theme, class: "btn-action"
                 = link_to t('themes.index.edit'), edit_theme_path(theme), class: "btn-action"

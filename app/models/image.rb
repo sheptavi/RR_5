@@ -8,6 +8,6 @@ class Image < ApplicationRecord
   }
   
   def translated_name
-    I18n.t("images.#{id}", default: name)
+    I18n.t("images_translations.#{id}", default: name)
   end
 end

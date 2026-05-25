@@ -6,13 +6,12 @@ ru:
       help: "Помощь"
       contacts: "Контакты"
       about: "О проекте"
-      sign_in: "Войти"
+      sign_in: "Вход"
       sign_out: "Выйти"
       sign_up: "Регистрация"
       profile: "Мой профиль"
-      settings: "Настройки"
       person: "Я"
-  
+
   work:
     index:
       select_theme: "Выберите тему"
@@ -23,45 +22,78 @@ ru:
       results: "Результаты:"
       user_value: "Ваша оценка:"
       common_value: "Средняя оценка экспертов:"
-      not_rated: "не оценено"
-      no_estimates: "нет оценок"
       image_not_selected: "Изображение не выбрано"
       default_theme: "Выберите тему для оценки"
-  
-  main:
+
+  themes:
     index:
-      title: "Добро пожаловать!"
-      description: "Это мой курсовой проект на Ruby on Rails."
-      expert_system: "Экспертная система оценки изображений."
-      features: "Функциональность проекта"
-      images_rating: "Оценка изображений"
-      images_desc: "Выбирайте изображения и ставьте оценки"
-      analysis: "Анализ результатов"
-      analysis_desc: "Сравнивайте свои оценки с мнением сообщества"
-      profile: "Личный кабинет"
-      profile_desc: "Следите за своими оценками и прогрессом"
-      start_rating: "Начать оценку"
-    help:
-      title: "Помощь"
-      instruction: "Инструкция по работе с приложением"
-      functions: "Основные функции:"
-      func1: "Выбор изображения из списка"
-      func2: "Постановка оценки от 1 до 10"
-      func3: "Просмотр результатов экспертизы"
-      back: "На главную"
-    contacts:
-      title: "Контакты"
-      email: "Email:"
-      phone: "Телефон:"
-      telegram: "Telegram:"
-      back: "На главную"
-    about:
-      title: "О проекте"
-      description: "Этот проект создан в рамках курсовой работы."
-      topic: "Тема: Экспертная система оценки изображений."
-      tech: "Технологии: Ruby on Rails, PostgreSQL, Bootstrap."
-      back: "На главную"
-  
+      title: "Список тем"
+      new_theme: "Новая тема"
+      images_count: "Количество изображений:"
+      show: "Показать"
+      edit: "Редактировать"
+      delete: "Удалить"
+      confirm: "Вы уверены?"
+      no_themes: "Пока нет ни одной темы."
+      create_first: "Создайте первую тему"
+    new:
+      title: "Новая тема"
+      name: "Название темы"
+      qty_items: "Количество изображений"
+      create: "Создать тему"
+      cancel: "Отмена"
+    edit:
+      title: "Редактирование темы"
+      update: "Обновить тему"
+
+  images:
+    index:
+      title: "Список изображений"
+      new_image: "Новое изображение"
+      theme: "Тема:"
+      without_theme: "Без темы"
+      average_rating: "Средняя оценка:"
+      no_ratings: "Нет оценок"
+      show: "Показать"
+      edit: "Редактировать"
+      delete: "Удалить"
+      confirm: "Вы уверены?"
+      no_images: "Пока нет ни одного изображения."
+      create_first: "Загрузите первое изображение"
+    new:
+      title: "Новое изображение"
+      name: "Название изображения"
+      file: "Ссылка на изображение"
+      theme_id: "Тема"
+      select_theme: "--- Выберите тему ---"
+      ave_value: "Средняя оценка"
+      create: "Создать изображение"
+      cancel: "Отмена"
+      back: "Назад"
+    edit:
+      title: "Редактирование изображения"
+      update: "Обновить изображение"
+      back: "Назад"
+    show:
+      back: "Назад к списку"
+      name: "Название:"
+      theme: "Тема:"
+      file: "Ссылка на файл:"
+      average: "Средняя оценка:"
+      created: "Создано:"
+      no_image: "Нет изображения"
+
+  values:
+    index:
+      title: "Список оценок"
+      user: "Пользователь"
+      image: "Изображение"
+      value: "Оценка"
+      created: "Дата"
+      show: "Показать"
+      edit: "Редактировать"
+      delete: "Удалить"
+
   users:
     new:
       title: "Регистрация"
@@ -84,7 +116,7 @@ ru:
       date: "Дата"
       go_to_work: "Перейти в рабочую область"
       unknown: "Неизвестно"
-  
+
   sessions:
     new:
       title: "Вход в систему"
@@ -93,143 +125,23 @@ ru:
       submit: "Войти"
       no_account: "Нет аккаунта?"
       sign_up: "Зарегистрироваться"
-  
-  images:
-    index:
-      title: "Список изображений"
-      new_image: "Новое изображение"
-      theme: "Тема:"
-      without_theme: "Без темы"
-      average_rating: "Средняя оценка:"
-      no_ratings: "Нет оценок"
-      show: "Показать"
-      edit: "Редактировать"
-      delete: "Удалить"
-      confirm: "Вы уверены?"
-      no_images: "Пока нет ни одного изображения."
-      create_first: "Загрузите первое изображение"
-    new:
-      title: "Новое изображение"
-      back: "Назад"
-      name: "Название изображения"
-      file: "Ссылка на изображение"
-      theme_id: "Тема"
-      select_theme: "--- Выберите тему ---"
-      ave_value: "Средняя оценка"
-      create: "Создать изображение"
-      cancel: "Отмена"
-    edit:
-      title: "Редактирование изображения"
-      back: "Назад"
-      update: "Обновить изображение"
-      cancel: "Отмена"
-    show:
-      back: "Назад к списку"
-      name: "Название:"
-      theme: "Тема:"
-      file: "Ссылка на файл:"
-      average: "Средняя оценка:"
-      created: "Создано:"
-      no_image: "Нет изображения"
-  
-  themes:
-    index:
-      title: "Список тем"
-      new_theme: "Новая тема"
-      images_count: "Количество изображений:"
-      show: "Показать"
-      edit: "Редактировать"
-      delete: "Удалить"
-      confirm: "Вы уверены?"
-      no_themes: "Пока нет ни одной темы."
-      create_first: "Создайте первую тему"
-    new:
-      title: "Новая тема"
-      name: "Название темы"
-      qty_items: "Количество изображений"
-      create: "Создать тему"
-      cancel: "Отмена"
-    edit:
-      title: "Редактирование темы"
-      update: "Обновить тему"
-      cancel: "Отмена"
-  
-  values:
-    index:
-      title: "Список оценок"
-      user: "Пользователь"
-      image: "Изображение"
-      value: "Оценка"
-      created: "Дата"
-      show: "Показать"
-      edit: "Редактировать"
-      delete: "Удалить"
-  
+
   footer:
     rights: "Все права защищены"
-  
+
   actions:
-    show: "Показать"
-    edit: "Редактировать"
-    delete: "Удалить"
     back: "Назад"
-    save: "Сохранить"
     cancel: "Отмена"
-    create: "Создать"
-    update: "Обновить"
-  
-  activerecord:
-    errors:
-      models:
-        user:
-          attributes:
-            name:
-              blank: "заполните это поле"
-            email:
-              blank: "заполните это поле"
-              invalid: "введите корректный email (должен содержать @)"
-            password:
-              blank: "заполните это поле"
-              too_short: "слишком короткий (минимум %{count} символов)"
-      template:
-        body: "Пожалуйста, исправьте следующие ошибки:"
-        header:
-          one: "%{count} ошибка не позволяет сохранить эту запись"
-          few: "%{count} ошибки не позволяют сохранить эту запись"
-          many: "%{count} ошибок не позволяют сохранить эту запись"
-          other: "%{count} ошибка не позволяет сохранить эту запись"
-  
-  helpers:
-    submit:
-      user:
-        create: "Зарегистрироваться"
-        update: "Обновить"
-      theme:
-        create: "Создать тему"
-        update: "Обновить тему"
-      image:
-        create: "Создать изображение"
-        update: "Обновить изображение"
-  
-  date:
-    formats:
-      default: "%d.%m.%Y"
-      long: "%d %B %Y"
-      short: "%d.%m.%y"
-  
-  time:
-    formats:
-      default: "%d.%m.%Y"
-      long: "%d %B %Y %H:%M"
-      short: "%d.%m.%y"
-  
+
+  # Переводы для тем по ID
   themes_translations:
     1: "--- Нет темы ---"
     2: "Пейзажи и природа"
     3: "Городская архитектура"
     4: "Животные и дикая природа"
     5: "Портреты и люди"
-  
+
+  # Переводы для изображений по ID
   images_translations:
     33: "Горный пейзаж"
     34: "Океанский закат"
@@ -247,3 +159,78 @@ ru:
     46: "Старик у моря"
     47: "Ребенок улыбается"
     48: "Художник за работой"
+
+  main:
+    help:
+      title: "Помощь"
+      instruction: "Инструкция по работе с приложением"
+      functions: "Основные функции:"
+      func1: "Выбор изображения из списка"
+      func2: "Постановка оценки от 1 до 10"
+      func3: "Просмотр результатов экспертизы"
+      back: "На главную"
+    contacts:
+      title: "Контакты"
+      email: "Email:"
+      phone: "Телефон:"
+      telegram: "Telegram:"
+      back: "На главную"
+    about:
+      title: "О проекте"
+      description: "Этот проект создан в рамках курсовой работы."
+      topic: "Тема: Экспертная система оценки изображений."
+      tech: "Технологии: Ruby on Rails, PostgreSQL, Bootstrap."
+      back: "На главную"
+
+  date:
+    formats:
+      default: "%d.%m.%Y"
+      long: "%d %B %Y"
+      short: "%d.%m.%y"
+  
+  time:
+    formats:
+      default: "%d.%m.%Y %H:%M"
+      long: "%d %B %Y %H:%M"
+      short: "%d.%m.%y %H:%M"
+
+
+  work:
+    index:
+      question: "Насколько изображение соответствует теме?"
+      your_rating: "Ваша оценка:"
+      save_rating: "Сохранить оценку"
+      hint: "Сначала выберите оценку (1-10), затем нажмите 'Сохранить'"
+      results: "Результаты:"
+      user_value: "Ваша оценка:"
+      common_value: "Средняя оценка экспертов:"
+      select_theme: "Выберите тему"
+      select_theme_btn: "Выбрать тему"
+      image_not_selected: "Изображение не выбрано"
+      default_theme: "Выберите тему для оценки"
+
+  users:
+    index:
+      title: "Список пользователей"
+      id: "ID"
+      name: "Имя"
+      email: "Email"
+      ratings_count: "Кол-во оценок"
+      avg_rating: "Средняя оценка"
+      show: "Показать"
+      no_users: "Нет пользователей"
+      no_ratings: "нет оценок"
+
+
+  users:
+    show:
+      my_stats: "Моя статистика"
+      total_ratings: "Всего оценок:"
+      average_rating: "Средняя оценка:"
+      no_ratings: "Нет оценок"
+      my_ratings: "Мои оценки"
+      image: "Изображение"
+      rating: "Оценка"
+      date: "Дата"
+      go_to_work: "Перейти в рабочую область"
+      unknown: "Неизвестно"

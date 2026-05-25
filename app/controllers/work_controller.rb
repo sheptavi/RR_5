@@ -10,10 +10,11 @@ class WorkController < ApplicationController
   end
   
   def choose_theme
-    @themes = Theme.where.not(id: 1).pluck(:name)
+    themes = Theme.where.not(id: 1)
+    @themes = themes.map { |t| { id: t.id, name: t.translated_name } }
     render json: { themes: @themes }
-  end
-  
+  end  
+
   def display_theme
     theme_name = params[:theme]
     theme = Theme.find_by(name: theme_name)

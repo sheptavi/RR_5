@@ -10,10 +10,8 @@ en:
       sign_out: "Sign out"
       sign_up: "Sign up"
       profile: "My profile"
-      settings: "Settings"
       person: "Me"
-      language: "Language"
-  
+
   work:
     index:
       select_theme: "Select theme"
@@ -24,115 +22,9 @@ en:
       results: "Results:"
       user_value: "Your rating:"
       common_value: "Average expert rating:"
-      not_rated: "not rated"
-      no_estimates: "no ratings"
       image_not_selected: "Image not selected"
       default_theme: "Select a theme to rate"
-  
-  main:
-    index:
-      title: "Welcome!"
-      description: "This is my course project on Ruby on Rails."
-      expert_system: "Expert image rating system."
-      features: "Project Features"
-      images_rating: "Image Rating"
-      images_desc: "Select images and rate them"
-      analysis: "Results Analysis"
-      analysis_desc: "Compare your ratings with the community"
-      profile: "Personal Cabinet"
-      profile_desc: "Track your ratings and progress"
-      start_rating: "Start rating"
-    help:
-      title: "Help"
-      instruction: "Application instructions"
-      functions: "Main functions:"
-      func1: "Select an image from the list"
-      func2: "Enter a rating from 1 to 10"
-      func3: "View expert results"
-      back: "Back to home"
-    contacts:
-      title: "Contacts"
-      email: "Email:"
-      phone: "Phone:"
-      telegram: "Telegram:"
-      back: "Back to home"
-    about:
-      title: "About"
-      description: "This project was created as a course work."
-      topic: "Topic: Expert image rating system."
-      tech: "Technologies: Ruby on Rails, PostgreSQL, Bootstrap."
-      back: "Back to home"
-  
-  users:
-    new:
-      title: "Sign up"
-      name: "Name"
-      email: "Email"
-      password: "Password (minimum 6 characters)"
-      password_confirmation: "Password confirmation"
-      submit: "Sign up"
-      have_account: "Already have an account?"
-      sign_in: "Sign in"
-      error: "Error"
-    show:
-      my_stats: "My statistics"
-      total_ratings: "Total ratings:"
-      average_rating: "Average rating:"
-      no_ratings: "No ratings"
-      my_ratings: "My ratings"
-      image: "Image"
-      rating: "Rating"
-      date: "Date"
-      go_to_work: "Go to work area"
-      unknown: "Unknown"
-  
-  sessions:
-    new:
-      title: "Sign in"
-      email: "Email"
-      password: "Password"
-      submit: "Sign in"
-      no_account: "Don't have an account?"
-      sign_up: "Sign up"
-  
-  images:
-    index:
-      title: "Images list"
-      new_image: "New image"
-      theme: "Theme:"
-      without_theme: "Without theme"
-      average_rating: "Average rating:"
-      no_ratings: "No ratings"
-      show: "Show"
-      edit: "Edit"
-      delete: "Delete"
-      confirm: "Are you sure?"
-      no_images: "No images yet."
-      create_first: "Upload your first image"
-    new:
-      title: "New image"
-      back: "Back"
-      name: "Image name"
-      file: "Image URL"
-      theme_id: "Theme"
-      select_theme: "--- Select theme ---"
-      ave_value: "Average rating"
-      create: "Create image"
-      cancel: "Cancel"
-    edit:
-      title: "Edit image"
-      back: "Back"
-      update: "Update image"
-      cancel: "Cancel"
-    show:
-      back: "Back to list"
-      name: "Name:"
-      theme: "Theme:"
-      file: "File URL:"
-      average: "Average rating:"
-      created: "Created:"
-      no_image: "No image"
-  
+
   themes:
     index:
       title: "Themes list"
@@ -153,8 +45,44 @@ en:
     edit:
       title: "Edit theme"
       update: "Update theme"
+
+  images:
+    index:
+      title: "Images list"
+      new_image: "New image"
+      theme: "Theme:"
+      without_theme: "Without theme"
+      average_rating: "Average rating:"
+      no_ratings: "No ratings"
+      show: "Show"
+      edit: "Edit"
+      delete: "Delete"
+      confirm: "Are you sure?"
+      no_images: "No images yet."
+      create_first: "Upload your first image"
+    new:
+      title: "New image"
+      name: "Image name"
+      file: "Image URL"
+      theme_id: "Theme"
+      select_theme: "--- Select theme ---"
+      ave_value: "Average rating"
+      create: "Create image"
       cancel: "Cancel"
-  
+      back: "Back"
+    edit:
+      title: "Edit image"
+      update: "Update image"
+      back: "Back"
+    show:
+      back: "Back to list"
+      name: "Name:"
+      theme: "Theme:"
+      file: "File URL:"
+      average: "Average rating:"
+      created: "Created:"
+      no_image: "No image"
+
   values:
     index:
       title: "Ratings list"
@@ -165,110 +93,146 @@ en:
       show: "Show"
       edit: "Edit"
       delete: "Delete"
-  
-  flash:
-    login_failed: "Invalid email or password"
-    welcome: "Welcome, %{name}!"
-    rating_saved: "Rating saved"
-    rating_error: "Error saving rating"
-    theme_created: "Theme successfully created"
-    theme_updated: "Theme updated"
-    theme_deleted: "Theme deleted"
-    image_created: "Image successfully added"
-    image_updated: "Image updated"
-    image_deleted: "Image deleted"
-    please_sign_in: "Please sign in"
-  
-  actions:
-    show: "Show"
-    edit: "Edit"
-    delete: "Delete"
-    back: "Back"
-    save: "Save"
-    cancel: "Cancel"
-    create: "Create"
-    update: "Update"
 
-  themes:
+  users:
+    new:
+      title: "Sign up"
+      name: "Name"
+      email: "Email"
+      password: "Password (min 6 characters)"
+      password_confirmation: "Confirm password"
+      submit: "Sign up"
+      have_account: "Already have an account?"
+      sign_in: "Sign in"
+      error: "Error"
+    show:
+      my_stats: "My statistics"
+      total_ratings: "Total ratings:"
+      average_rating: "Average rating:"
+      no_ratings: "No ratings"
+      my_ratings: "My ratings"
+      image: "Image"
+      rating: "Rating"
+      date: "Date"
+      go_to_work: "Go to work area"
+      unknown: "Unknown"
+
+  sessions:
+    new:
+      title: "Sign in"
+      email: "Email"
+      password: "Password"
+      submit: "Sign in"
+      no_account: "Don't have an account?"
+      sign_up: "Sign up"
+
+  footer:
+    rights: "All rights reserved"
+
+  actions:
+    back: "Back"
+    cancel: "Cancel"
+
+  themes_translations:
     1: "--- No theme ---"
     2: "Landscapes and nature"
     3: "Urban architecture"
     4: "Animals and wildlife"
     5: "Portraits and people"
-  
-  images:
-    1: "Mountain landscape"
-    2: "Ocean sunset"
-    3: "Forest lake"
-    4: "Winter forest"
-    5: "Night metropolis"
-    6: "Old town"
-    7: "Modern architecture"
-    8: "Paris streets"
-    9: "Fox in the forest"
-    10: "Owl"
-    11: "Deer"
-    12: "Butterfly on a flower"
-    13: "Girl with a book"
-    14: "Old man by the sea"
-    15: "Smiling child"
-    16: "Artist at work"
-  
-  activerecord:
-    errors:
-      models:
-        user:
-          attributes:
-            name:
-              blank: "can't be blank"
-            email:
-              blank: "can't be blank"
-              invalid: "invalid email format"
-            password:
-              blank: "can't be blank"
-              too_short: "is too short (minimum %{count} characters)"
-        image:
-          attributes:
-            name:
-              blank: "can't be blank"
-            file:
-              blank: "can't be blank"
-        theme:
-          attributes:
-            name:
-              blank: "can't be blank"
-      template:
-        body: "Please fix the following errors:"
-        header:
-          one: "%{count} error prohibited this record from being saved"
-          few: "%{count} errors prohibited this record from being saved"
-          many: "%{count} errors prohibited this record from being saved"
-          other: "%{count} error prohibited this record from being saved"
-  
-  helpers:
-    submit:
-      user:
-        create: "Sign up"
-        update: "Update"
-      theme:
-        create: "Create theme"
-        update: "Update theme"
-      image:
-        create: "Create image"
-        update: "Update image"
-  
+
+  images_translations:
+    33: "Mountain landscape"
+    34: "Ocean sunset"
+    35: "Forest lake"
+    36: "Winter forest"
+    37: "Night metropolis"
+    38: "Old town"
+    39: "Modern architecture"
+    40: "Paris streets"
+    41: "Fox in the forest"
+    42: "Owl"
+    43: "Deer"
+    44: "Butterfly on a flower"
+    45: "Girl with a book"
+    46: "Old man by the sea"
+    47: "Smiling child"
+    48: "Artist at work"
+
+  main:
+    help:
+      title: "Help"
+      instruction: "Application instructions"
+      functions: "Main functions:"
+      func1: "Select an image from the list"
+      func2: "Enter a rating from 1 to 10"
+      func3: "View expert results"
+      back: "Back to home"
+    contacts:
+      title: "Contacts"
+      email: "Email:"
+      phone: "Phone:"
+      telegram: "Telegram:"
+      back: "Back to home"
+    about:
+      title: "About"
+      description: "This project was created as a course work."
+      topic: "Topic: Expert image rating system."
+      tech: "Technologies: Ruby on Rails, PostgreSQL, Bootstrap."
+      back: "Back to home"
+
   date:
     formats:
       default: "%d.%m.%Y"
       long: "%B %d, %Y"
       short: "%d.%m.%y"
-    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
   
   time:
     formats:
-      default: "%d.%m.%Y"
+      default: "%d.%m.%Y %H:%M"
       long: "%B %d, %Y %H:%M"
-      short: "%d.%m.%y"
+      short: "%d.%m.%y %H:%M"
 
-  footer:
-    rights: "All rights reserved"
+  work:
+    index:
+      question: "How well does the image match the theme?"
+      your_rating: "Your rating:"
+      save_rating: "Save rating"
+      hint: "First select a rating (1-10), then click 'Save'"
+      results: "Results:"
+      user_value: "Your rating:"
+      common_value: "Average expert rating:"
+      select_theme: "Select theme"
+      select_theme_btn: "Select theme"
+      image_not_selected: "Image not selected"
+      default_theme: "Select a theme to rate"
+
+  themes_translations:
+    1: "--- No theme ---"
+    2: "Landscapes and nature"
+    3: "Urban architecture"
+    4: "Animals and wildlife"
+    5: "Portraits and people"
+  users:
+    index:
+      title: "Users list"
+      id: "ID"
+      name: "Name"
+      email: "Email"
+      ratings_count: "Ratings count"
+      avg_rating: "Average rating"
+      show: "Show"
+      no_users: "No users"
+      no_ratings: "no ratings"
+
+  users:
+    show:
+      my_stats: "My statistics"
+      total_ratings: "Total ratings:"
+      average_rating: "Average rating:"
+      no_ratings: "No ratings"
+      my_ratings: "My ratings"
+      image: "Image"
+      rating: "Rating"
+      date: "Date"
+      go_to_work: "Go to work area"
+      unknown: "Unknown"

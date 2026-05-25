@@ -1,26 +1,12 @@
 .container.mt-4
-  .d-flex.justify-content-between.align-items-center.mb-4
-    %h1= t('themes.edit.title')
-    = link_to t('actions.back'), themes_path, class: "btn-create"
-
-  .card.theme-card
-    .card-body
-      = form_with(model: @theme, local: true) do |f|
-        - if @theme.errors.any?
-          .alert.alert-danger
-            %h5= t('users.new.error')
-            %ul
-              - @theme.errors.full_messages.each do |msg|
-                %li= msg
-        
-        .mb-3
-          = f.label :name, t('themes.new.name'), class: "form-label"
-          = f.text_field :name, class: "form-control", required: true
-        
-        .mb-3
-          = f.label :qty_items, t('themes.new.qty_items'), class: "form-label"
-          = f.number_field :qty_items, class: "form-control", min: 0
-        
-        .d-flex.gap-2.justify-content-center
-          = f.submit t('themes.edit.update'), class: "btn-create"
-          = link_to t('actions.cancel'), themes_path, class: "btn-create"
+  %h1= t('themes.edit.title') + ": " + @theme.translated_name
+  = form_with(model: @theme, local: true) do |f|
+    .mb-3
+      = f.label :name, t('themes.new.name'), class: "form-label"
+      = f.text_field :name, class: "form-control", required: true
+    .mb-3
+      = f.label :qty_items, t('themes.new.qty_items'), class: "form-label"
+      = f.number_field :qty_items, class: "form-control", min: 0
+    .d-flex.gap-2
+      = f.submit t('themes.edit.update'), class: "btn-create"
+      = link_to t('actions.cancel'), themes_path, class: "btn-create"

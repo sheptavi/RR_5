@@ -2,10 +2,10 @@
   .container
     .row
       .col
-        = link_to t('shared.header.home'), root_path, class: "text-white mx-2 text-decoration-none"
-        = link_to t('shared.header.help'), main_help_path, class: "text-white mx-2 text-decoration-none"
-        = link_to t('shared.header.contacts'), main_contacts_path, class: "text-white mx-2 text-decoration-none"
-        = link_to t('shared.header.about'), main_about_path, class: "text-white mx-2 text-decoration-none"
+        = link_to t('shared.header.home'), root_path(locale: I18n.locale), class: "text-white mx-2 text-decoration-none"
+        = link_to t('shared.header.help'), main_help_path(locale: I18n.locale), class: "text-white mx-2 text-decoration-none"
+        = link_to t('shared.header.contacts'), main_contacts_path(locale: I18n.locale), class: "text-white mx-2 text-decoration-none"
+        = link_to t('shared.header.about'), main_about_path(locale: I18n.locale), class: "text-white mx-2 text-decoration-none"
     %hr.bg-secondary
     %p.mb-0
       &copy; #{Time.now.year} #{t('shared.header.logo_title')}

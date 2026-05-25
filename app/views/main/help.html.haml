@@ -1,8 +1,8 @@
-%h1= t('main.help.title')
-%p= t('main.help.instruction')
-%p= t('main.help.functions')
-%ul
-  %li= t('main.help.func1')
-  %li= t('main.help.func2')
-  %li= t('main.help.func3')
-= link_to t('main.help.back'), root_path, class: "btn btn-secondary mt-3"
+.container.mt-4
+  %h1= t('main.help.title')
+  %p= t('main.help.instruction')
+  %p= t('main.help.functions')
+  %ul
+    - (1..3).each do |i|
+      %li= t("main.help.func#{i}")
+  = link_to t('main.help.back'), root_path(locale: I18n.locale), class: "btn btn-secondary mt-3"

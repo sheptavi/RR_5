@@ -1,18 +1,12 @@
-%h1= t('main.contacts.title')
-%p
-  = t('main.contacts.email')
-  sheptunova.yvu@edu.spbstu.ru
-%p
-  = t('main.contacts.phone')
-  +7 (999) 123-45-67
-%p
-  = t('main.contacts.telegram')
-  @username
-= link_to t('main.contacts.back'), root_path, class: "btn btn-secondary mt-3"
-
-
-
-
-
-
-
+.container.mt-4
+  %h1= t('main.contacts.title')
+  %p
+    = t('main.contacts.email')
+    sheptunova.yvu@edu.spbstu.ru
+  %p
+    = t('main.contacts.phone')
+    +7 (999) 123-45-67
+  %p
+    = t('main.contacts.telegram')
+    @username
+  = link_to t('main.contacts.back'), root_path(locale: I18n.locale), class: "btn btn-secondary mt-3"

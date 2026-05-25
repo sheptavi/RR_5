@@ -1,5 +1,6 @@
 class ValuesController < ApplicationController
   def index
+    @values = Value.all.includes(:user, :image)
   end
 
   def show
