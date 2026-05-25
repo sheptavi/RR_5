@@ -22,6 +22,7 @@ class ThemesController < ApplicationController
 
   def edit
     @theme = Theme.find(params[:id])
+    @theme.name = @theme.translated_name if I18n.locale == :en
   end
 
   def update

@@ -22,6 +22,7 @@ class ImagesController < ApplicationController
 
   def edit
     @image = Image.find(params[:id])
+    @image.name = @image.translated_name if I18n.locale == :en
   end
 
   def update

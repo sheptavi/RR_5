@@ -14,6 +14,7 @@ en:
 
   work:
     index:
+      question: "How well does the image match the theme?"
       select_theme: "Select theme"
       select_theme_btn: "Select theme"
       your_rating: "Your rating:"
@@ -22,6 +23,8 @@ en:
       results: "Results:"
       user_value: "Your rating:"
       common_value: "Average expert rating:"
+      not_rated: "not rated"
+      no_estimates: "no ratings"
       image_not_selected: "Image not selected"
       default_theme: "Select a theme to rate"
 
@@ -99,12 +102,22 @@ en:
       title: "Sign up"
       name: "Name"
       email: "Email"
-      password: "Password (min 6 characters)"
+      password: "Password (minimum 6 characters)"
       password_confirmation: "Confirm password"
       submit: "Sign up"
       have_account: "Already have an account?"
       sign_in: "Sign in"
       error: "Error"
+    index:
+      title: "Users list"
+      id: "ID"
+      name: "Name"
+      email: "Email"
+      ratings_count: "Ratings count"
+      avg_rating: "Average rating"
+      show: "Show"
+      no_users: "No users"
+      no_ratings: "no ratings"
     show:
       my_stats: "My statistics"
       total_ratings: "Total ratings:"
@@ -133,6 +146,28 @@ en:
     back: "Back"
     cancel: "Cancel"
 
+  main:
+    help:
+      title: "Help"
+      instruction: "Application instructions"
+      functions: "Main functions:"
+      func1: "Select an image from the list"
+      func2: "Enter a rating from 1 to 10"
+      func3: "View expert results"
+      back: "Back to home"
+    contacts:
+      title: "Contacts"
+      email: "Email:"
+      phone: "Phone:"
+      telegram: "Telegram:"
+      back: "Back to home"
+    about:
+      title: "About"
+      description: "This project was created as a course work."
+      topic: "Topic: Expert image rating system."
+      tech: "Technologies: Ruby on Rails, PostgreSQL, Bootstrap."
+      back: "Back to home"
+
   themes_translations:
     1: "--- No theme ---"
     2: "Landscapes and nature"
@@ -159,97 +194,23 @@ en:
     15: "Winter forest"
     16: "Mountain landscape"
 
-  main:
-    help:
-      title: "Help"
-      instruction: "Application instructions"
-      functions: "Main functions:"
-      func1: "Select an image from the list"
-      func2: "Enter a rating from 1 to 10"
-      func3: "View expert results"
-      back: "Back to home"
-    contacts:
-      title: "Contacts"
-      email: "Email:"
-      phone: "Phone:"
-      telegram: "Telegram:"
-      back: "Back to home"
-    about:
-      title: "About"
-      description: "This project was created as a course work."
-      topic: "Topic: Expert image rating system."
-      tech: "Technologies: Ruby on Rails, PostgreSQL, Bootstrap."
-      back: "Back to home"
-
   date:
     formats:
       default: "%d.%m.%Y"
       long: "%B %d, %Y"
       short: "%d.%m.%y"
-  
+
   time:
     formats:
       default: "%d.%m.%Y %H:%M"
       long: "%B %d, %Y %H:%M"
       short: "%d.%m.%y %H:%M"
 
-  work:
-    index:
-      question: "How well does the image match the theme?"
-      your_rating: "Your rating:"
-      save_rating: "Save rating"
-      hint: "First select a rating (1-10), then click 'Save'"
-      results: "Results:"
-      user_value: "Your rating:"
-      common_value: "Average expert rating:"
-      select_theme: "Select theme"
-      select_theme_btn: "Select theme"
-      image_not_selected: "Image not selected"
-      default_theme: "Select a theme to rate"
+  activerecord:
+    attributes:
+      theme:
+        created_at: "Created at"
 
-  themes_translations:
-    1: "--- No theme ---"
-    2: "Landscapes and nature"
-    3: "Urban architecture"
-    4: "Animals and wildlife"
-    5: "Portraits and people"
-  users:
-    index:
-      title: "Users list"
-      id: "ID"
-      name: "Name"
-      email: "Email"
-      ratings_count: "Ratings count"
-      avg_rating: "Average rating"
-      show: "Show"
-      no_users: "No users"
-      no_ratings: "no ratings"
-
-  users:
-    show:
-      my_stats: "My statistics"
-      total_ratings: "Total ratings:"
-      average_rating: "Average rating:"
-      no_ratings: "No ratings"
-      my_ratings: "My ratings"
-      image: "Image"
-      rating: "Rating"
-      date: "Date"
-      go_to_work: "Go to work area"
-      unknown: "Unknown"
-
-  work:
-    index:
-      question: "How well does the image match the theme?"
-      select_theme: "Select theme"
-      select_theme_btn: "Select theme"
-      your_rating: "Your rating:"
-      save_rating: "Save rating"
-      hint: "First select a rating (1-10), then click 'Save'"
-      results: "Results:"
-      user_value: "Your rating:"
-      common_value: "Average expert rating:"
-      not_rated: "not rated"
-      no_estimates: "no ratings"
-      image_not_selected: "Image not selected"
-      default_theme: "Select a theme to rate"
+  actions:
+    edit: "Edit"
+    cancel: "Cancel"

@@ -2,31 +2,41 @@
   .d-flex.justify-content-between.align-items-center.mb-4
     %h1= @image.translated_name
     = link_to t('actions.edit'), edit_image_path(@image), class: "btn-create"
+
   .row
     .col-md-6
       .card.theme-card
         .card-body
           - if @image.file.present? && @image.file.start_with?('http')
             %img.img-fluid.rounded{src: @image.file, style: "width: 100%; border-radius: 15px;"}
+          - elsif @image.file.present?
+            = image_tag "pictures/#{@image.file}", class: "img-fluid rounded", style: "width: 100%; border-radius: 15px;"
           - else
             .alert.alert-warning.text-center= t('images.show.no_image')
+
     .col-md-6
       .card.theme-card
         .card-body
           %p
             %strong= t('images.show.name')
-            %br= @image.name
+            %br
+            = @image.translated_name
           %p
             %strong= t('images.show.theme')
-            %br= @image.theme&.translated_name || t('images.index.without_theme')
+            %br
+            = @image.theme&.translated_name || t('images.index.without_theme')
           %p
             %strong= t('images.show.file')
-            %br= @image.file
+            %br
+            = @image.file
           %p
             %strong= t('images.show.average')
-            %br= @image.ave_value ? @image.ave_value.round(2) : t('images.index.no_ratings')
+            %br
+            %span.badge-counter= @image.ave_value ? @image.ave_value.round(2) : t('images.index.no_ratings')
           %p
             %strong= t('images.show.created')
-            %br= l(@image.created_at.to_date, format: :default) if @image.created_at
+            %br
+            = l(@image.created_at.to_date, format: :default) if @image.created_at
+
   .mt-4
     = link_to t('images.show.back'), images_path, class: "btn-create"
