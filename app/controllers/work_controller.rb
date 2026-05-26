@@ -10,13 +10,15 @@ class WorkController < ApplicationController
   end
   
   def choose_theme
+    I18n.locale = params[:locale] || I18n.default_locale
     themes = Theme.where.not(id: 1)
     @themes = themes.map { |t| { id: t.id, name: t.translated_name } }
     render json: { themes: @themes }
   end  
 
 def display_theme
-  theme = Theme.find_by(name: params[:theme])
+  theme_id = params[:theme_id]
+  theme = Theme.find_by(id: theme_id)
   return render json: { error: "Тема не найдена" }, status: 404 unless theme
 
   image = Image.where(theme_id: theme.id).first

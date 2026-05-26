@@ -44,33 +44,32 @@ function t(key) {
 console.log('Work.js загружен, локаль:', currentLocale);
 
 $(document).on('click', '#select_theme_btn', function() {
-  $.get('/choose_theme', function(data) {
+  $.get('/choose_theme?locale=' + currentLocale, function(data) {
     var select = $('#theme_dropdown');
     select.empty();
     select.append('<option value="">' + t('select_theme') + '</option>');
+    
     $.each(data.themes, function(index, theme) {
-      select.append('<option value="' + theme.name + '">' + theme.name + '</option>');
+      select.append('<option value="' + theme.id + '">' + theme.name + '</option>');
     });
+    
     $('.theme_select_container').show();
     $('#select_theme_btn').hide();
   });
 });
 
-// Выбор темы
 $(document).on('change', '#theme_dropdown', function() {
-  var themeName = $(this).val();
-  if (!themeName) return;
+  var themeId = $(this).val();
+  if (!themeId) return;
 
-  // СОХРАНЯЕМ НАЗВАНИЕ ТЕМЫ
-  currentThemeName = themeName;
-
-  $.post('/display_theme', { theme: themeName }, function(data) {
+  $.post('/display_theme', { theme_id: themeId }, function(data) {
     if (data.error) {
       alert(data.error);
       return;
     }
 
     currentThemeId = data.theme_id;
+    currentThemeName = data.theme_name;
     $('.up-theme h2').text(data.theme_name);
     $('.up').text(data.image_name);
     $('#main_image').attr('src', data.image_url).show();
@@ -83,42 +82,6 @@ $(document).on('change', '#theme_dropdown', function() {
     $('.theme_select_container').hide();
     $('#select_theme_btn').show();
     $('#theme_dropdown').val('');
-  });
-});
-
-// Следующее изображение
-$(document).on('click', '.img-right-side', function() {
-  if (!currentThemeName) { alert('Сначала выберите тему'); return; }
-
-  $.post('/api/next_image', {
-    index: currentIndex,
-    theme_id: currentThemeId,
-    length: totalImages
-  }, function(data) {
-    currentIndex = data.new_image_index;
-    currentImageId = data.image_id;
-    $('.up').text(data.name);
-    $('#main_image').attr('src', data.image_url).show();
-    $('#user_value').text('Ваша оценка: ' + (data.user_valued ? data.value : 'не оценено'));
-    $('#common_value').text('Средняя оценка экспертов: ' + (data.common_ave_value > 0 ? data.common_ave_value : 'нет оценок'));
-  });
-});
-
-// Предыдущее изображение
-$(document).on('click', '.img-left-side', function() {
-  if (!currentThemeName) { alert('Сначала выберите тему'); return; }
-
-  $.post('/api/prev_image', {
-    index: currentIndex,
-    theme_id: currentThemeId,
-    length: totalImages
-  }, function(data) {
-    currentIndex = data.new_image_index;
-    currentImageId = data.image_id;
-    $('.up').text(data.name);
-    $('#main_image').attr('src', data.image_url).show();
-    $('#user_value').text('Ваша оценка: ' + (data.user_valued ? data.value : 'не оценено'));
-    $('#common_value').text('Средняя оценка экспертов: ' + (data.common_ave_value > 0 ? data.common_ave_value : 'нет оценок'));
   });
 });
 
@@ -162,7 +125,7 @@ $(document).on('click', '#save_rating', function() {
 });
 
 $(document).on('click', '.img-right-side', function() {
-  if (!currentThemeName) {
+  if (!currentThemeId) {
     alert(t('choose_theme_first'));
     return;
   }
@@ -180,7 +143,7 @@ $(document).on('click', '.img-right-side', function() {
     currentIndex = data.new_image_index;
     currentImageId = data.image_id;
     $('.up').text(data.name);
-    $('#main_image').attr('src', data.image_url);
+    $('#main_image').attr('src', data.image_url).show();
     $('#user_value').text(t('your_rating') + ' ' + (data.user_valued ? data.value : t('not_rated')));
     $('#common_value').text(t('avg_rating') + ' ' + (data.common_ave_value > 0 ? data.common_ave_value : t('no_ratings')));
   }).fail(function() {
@@ -189,7 +152,7 @@ $(document).on('click', '.img-right-side', function() {
 });
 
 $(document).on('click', '.img-left-side', function() {
-  if (!currentThemeName) {
+  if (!currentThemeId) {
     alert(t('choose_theme_first'));
     return;
   }
@@ -207,7 +170,7 @@ $(document).on('click', '.img-left-side', function() {
     currentIndex = data.new_image_index;
     currentImageId = data.image_id;
     $('.up').text(data.name);
-    $('#main_image').attr('src', data.image_url);
+    $('#main_image').attr('src', data.image_url).show();
     $('#user_value').text(t('your_rating') + ' ' + (data.user_valued ? data.value : t('not_rated')));
     $('#common_value').text(t('avg_rating') + ' ' + (data.common_ave_value > 0 ? data.common_ave_value : t('no_ratings')));
   }).fail(function() {
@@ -219,6 +182,11 @@ $(document).ready(function() {
   console.log('DOM готов');
   $('.img-left-side, .img-right-side').hide();
   $('.theme_select_container').hide();
+  
   var locale = $('html').attr('lang') || 'ru';
-  $('#select_theme_btn').text(locale === 'en' ? 'Select theme' : 'Выбрать тему');
+  if (locale === 'en') {
+    $('#select_theme_btn').text('Select theme');
+  } else {
+    $('#select_theme_btn').text('Выбрать тему');
+  }
 });
