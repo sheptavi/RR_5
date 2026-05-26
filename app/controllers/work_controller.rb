@@ -19,10 +19,13 @@ class WorkController < ApplicationController
 def display_theme
   theme_id = params[:theme_id]
   theme = Theme.find_by(id: theme_id)
-  return render json: { error: "Тема не найдена" }, status: 404 unless theme
+  return render json: { error: "Theme not found" }, status: 404 unless theme
+
+  # Принудительно устанавливаем локаль из параметров
+  I18n.locale = params[:locale] || I18n.default_locale
 
   image = Image.where(theme_id: theme.id).first
-  return render json: { error: "Нет изображений" } unless image
+  return render json: { error: "No images" } unless image
 
   user_value = Value.find_by(user_id: (current_user&.id || 1), image_id: image.id)&.value || 0
 

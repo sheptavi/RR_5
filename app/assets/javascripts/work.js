@@ -62,26 +62,61 @@ $(document).on('change', '#theme_dropdown', function() {
   var themeId = $(this).val();
   if (!themeId) return;
 
-  $.post('/display_theme', { theme_id: themeId }, function(data) {
-    if (data.error) {
-      alert(data.error);
-      return;
-    }
+$.post('/display_theme', { theme_id: themeId, locale: currentLocale }, function(data) {
+  if (data.error) {
+    alert(data.error);
+    return;
+  }
 
-    currentThemeId = data.theme_id;
-    currentThemeName = data.theme_name;
-    $('.up-theme h2').text(data.theme_name);
-    $('.up').text(data.image_name);
-    $('#main_image').attr('src', data.image_url).show();
-    currentImageId = data.image_id;
-    currentIndex = data.current_index;
-    totalImages = data.total_images;
-    $('#user_value').text(t('your_rating') + ' ' + (data.user_value > 0 ? data.user_value : t('not_rated')));
-    $('#common_value').text(t('avg_rating') + ' ' + (data.common_value > 0 ? data.common_value : t('no_ratings')));
-    $('.img-left-side, .img-right-side').show();
-    $('.theme_select_container').hide();
-    $('#select_theme_btn').show();
-    $('#theme_dropdown').val('');
+  // ПРЯМАЯ ЗАМЕНА названий на английские
+  if (currentLocale === 'en') {
+    // Замена названий тем
+    var themeNames = {
+      'Пейзажи и природа': 'Landscapes and nature',
+      'Городская архитектура': 'Urban architecture',
+      'Животные и дикая природа': 'Animals and wildlife',
+      'Портреты и люди': 'Portraits and people',
+      'Бытовые вещи': 'Household items'
+    };
+    
+    // Замена названий изображений
+    var imageNames = {
+      'Дерево': 'Tree',
+      'Девушка с книгой': 'Girl with a book',
+      'Кафе в Париже': 'Cafe in Paris',
+      'Набережная': 'Embankment',
+      'Гитара': 'Guitar',
+      'Современная архитектура': 'Modern architecture',
+      'Лесное озеро': 'Forest lake',
+      'Ноутбук': 'Laptop',
+      'Кружка': 'Mug',
+      'Горы': 'Mountains',
+      'Город': 'City',
+      'Старик у моря': 'Old man by the sea',
+      'Водопад': 'Waterfall',
+      'Сова': 'Owl',
+      'Зимний лес': 'Winter forest',
+      'Горный пейзаж': 'Mountain landscape'
+    };
+    
+    data.theme_name = themeNames[data.theme_name] || data.theme_name;
+    data.image_name = imageNames[data.image_name] || data.image_name;
+  }
+
+   currentThemeId = data.theme_id;
+   currentThemeName = data.theme_name;
+   $('.up-theme h2').text(data.theme_name);
+   $('.up').text(data.image_name);
+   $('#main_image').attr('src', data.image_url).show();
+   currentImageId = data.image_id;
+   currentIndex = data.current_index;
+   totalImages = data.total_images;
+   $('#user_value').text(t('your_rating') + ' ' + (data.user_value > 0 ? data.user_value : t('not_rated')));
+   $('#common_value').text(t('avg_rating') + ' ' + (data.common_value > 0 ? data.common_value : t('no_ratings')));
+   $('.img-left-side, .img-right-side').show();
+   $('.theme_select_container').hide();
+   $('#select_theme_btn').show();
+   $('#theme_dropdown').val('');
   });
 });
 
@@ -133,13 +168,37 @@ $(document).on('click', '.img-right-side', function() {
   $.ajax({
     type: "POST",
     url: "/api/next_image",
-    data: { index: currentIndex, theme_id: currentThemeId, length: totalImages },
+    data: { index: currentIndex, theme_id: currentThemeId, length: totalImages, locale: currentLocale },
     dataType: 'json'
   }).done(function(data) {
     if (data.error) {
       console.error(data.error);
       return;
     }
+
+    // ПРЯМАЯ ЗАМЕНА названий на английские для стрелок
+    if (currentLocale === 'en') {
+      var imageNames = {
+        'Дерево': 'Tree',
+        'Девушка с книгой': 'Girl with a book',
+        'Кафе в Париже': 'Cafe in Paris',
+        'Набережная': 'Embankment',
+        'Гитара': 'Guitar',
+        'Современная архитектура': 'Modern architecture',
+        'Лесное озеро': 'Forest lake',
+        'Ноутбук': 'Laptop',
+        'Кружка': 'Mug',
+        'Горы': 'Mountains',
+        'Город': 'City',
+        'Старик у моря': 'Old man by the sea',
+        'Водопад': 'Waterfall',
+        'Сова': 'Owl',
+        'Зимний лес': 'Winter forest',
+        'Горный пейзаж': 'Mountain landscape'
+      };
+      data.name = imageNames[data.name] || data.name;
+    }
+    
     currentIndex = data.new_image_index;
     currentImageId = data.image_id;
     $('.up').text(data.name);
@@ -160,13 +219,37 @@ $(document).on('click', '.img-left-side', function() {
   $.ajax({
     type: "POST",
     url: "/api/prev_image",
-    data: { index: currentIndex, theme_id: currentThemeId, length: totalImages },
+    data: { index: currentIndex, theme_id: currentThemeId, length: totalImages, locale: currentLocale },
     dataType: 'json'
   }).done(function(data) {
     if (data.error) {
       console.error(data.error);
       return;
     }
+
+    // ПРЯМАЯ ЗАМЕНА названий на английские для стрелок
+    if (currentLocale === 'en') {
+      var imageNames = {
+        'Дерево': 'Tree',
+        'Девушка с книгой': 'Girl with a book',
+        'Кафе в Париже': 'Cafe in Paris',
+        'Набережная': 'Embankment',
+        'Гитара': 'Guitar',
+        'Современная архитектура': 'Modern architecture',
+        'Лесное озеро': 'Forest lake',
+        'Ноутбук': 'Laptop',
+        'Кружка': 'Mug',
+        'Горы': 'Mountains',
+        'Город': 'City',
+        'Старик у моря': 'Old man by the sea',
+        'Водопад': 'Waterfall',
+        'Сова': 'Owl',
+        'Зимний лес': 'Winter forest',
+        'Горный пейзаж': 'Mountain landscape'
+      };
+      data.name = imageNames[data.name] || data.name;
+    }
+    
     currentIndex = data.new_image_index;
     currentImageId = data.image_id;
     $('.up').text(data.name);
@@ -188,5 +271,32 @@ $(document).ready(function() {
     $('#select_theme_btn').text('Select theme');
   } else {
     $('#select_theme_btn').text('Выбрать тему');
+  }
+  // Принудительное обновление всех текстов при загрузке страницы
+  var locale = $('html').attr('lang') || 'ru';
+  
+  if (locale === 'en') {
+    $('#select_theme_btn').text('Select theme');
+    $('.up-theme h2').text('Select a theme to rate');
+    $('.up').text('Image not selected');
+    $('.rating-area h4').text('How well does the image match the theme?');
+    $('.rating-area h5').text('Your rating:');
+    $('#save_rating').text('Save rating');
+    $('.result-area h4').text('Results:');
+    $('#user_value').text('Your rating: ');
+    $('#common_value').text('Average expert rating: ');
+    $('.rating-buttons button').each(function() {
+      // Кнопки 1-10 не переводим, они цифры
+    });
+  } else {
+    $('#select_theme_btn').text('Выбрать тему');
+    $('.up-theme h2').text('Выберите тему для оценки');
+    $('.up').text('Изображение не выбрано');
+    $('.rating-area h4').text('Насколько изображение соответствует теме?');
+    $('.rating-area h5').text('Ваша оценка:');
+    $('#save_rating').text('Сохранить оценку');
+    $('.result-area h4').text('Результаты:');
+    $('#user_value').text('Ваша оценка: ');
+    $('#common_value').text('Средняя оценка экспертов: ');
   }
 });
